@@ -37,4 +37,8 @@ internal class KMVideoPlayerControlView: UIView {
     fatalError("init(coder:) has not been implemented")
   }
 
+  override var intrinsicContentSize: CGSize {
+    return CGSize(width: UIViewNoIntrinsicMetric, height: 32)
+  }
+
 }

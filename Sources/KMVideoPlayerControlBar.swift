@@ -36,8 +36,4 @@ internal class KMVideoPlayerControlBar: KMVideoPlayerControlView {
     fatalError()
   }
 
-  override var intrinsicContentSize: CGSize {
-    return CGSize(width: UIViewNoIntrinsicMetric, height: 32)
-  }
-
 }

@@ -76,4 +76,68 @@ extension UIImage {
     return image(fromLayer: layer)
   }
 
+  static func enterFullscreenImage() -> UIImage? {
+    let layer = CAShapeLayer()
+    layer.isOpaque = false
+    layer.frame = CGRect(x: 0, y: 0, width: 15, height: 15)
+    layer.fillColor = UIColor(white: 0.8, alpha: 1.0).cgColor
+    layer.strokeColor = layer.fillColor
+    layer.lineWidth = 2.0
+    layer.lineCap = kCALineCapRound
+    layer.lineJoin = kCALineJoinRound
+
+    let path = UIBezierPath()
+    path.move(to: CGPoint(x: 14, y: 1))
+    path.addLine(to: CGPoint(x: 10, y: 1))
+    path.addLine(to: CGPoint(x: 14, y: 1))
+    path.addLine(to: CGPoint(x: 9, y: 6))
+    path.addLine(to: CGPoint(x: 14, y: 1))
+    path.addLine(to: CGPoint(x: 14, y: 5))
+    path.close()
+
+    path.move(to: CGPoint(x: 1, y: 14))
+    path.addLine(to: CGPoint(x: 5, y: 14))
+    path.addLine(to: CGPoint(x: 1, y: 14))
+    path.addLine(to: CGPoint(x: 6, y: 9))
+    path.addLine(to: CGPoint(x: 1, y: 14))
+    path.addLine(to: CGPoint(x: 1, y: 10))
+    path.close()
+
+    layer.path = path.cgPath
+
+    return image(fromLayer: layer)
+  }
+
+  static func leaveFullscreenImage() -> UIImage? {
+    let layer = CAShapeLayer()
+    layer.isOpaque = false
+    layer.frame = CGRect(x: 0, y: 0, width: 15, height: 15)
+    layer.fillColor = UIColor(white: 0.8, alpha: 1.0).cgColor
+    layer.strokeColor = layer.fillColor
+    layer.lineWidth = 2.0
+    layer.lineCap = kCALineCapRound
+    layer.lineJoin = kCALineJoinRound
+
+    let path = UIBezierPath()
+    path.move(to: CGPoint(x: 9, y: 6))
+    path.addLine(to: CGPoint(x: 9, y: 2))
+    path.addLine(to: CGPoint(x: 9, y: 6))
+    path.addLine(to: CGPoint(x: 14, y: 1))
+    path.addLine(to: CGPoint(x: 9, y: 6))
+    path.addLine(to: CGPoint(x: 13, y: 6))
+    path.close()
+
+    path.move(to: CGPoint(x: 6, y: 9))
+    path.addLine(to: CGPoint(x: 2, y: 9))
+    path.addLine(to: CGPoint(x: 6, y: 9))
+    path.addLine(to: CGPoint(x: 1, y: 14))
+    path.addLine(to: CGPoint(x: 6, y: 9))
+    path.addLine(to: CGPoint(x: 6, y: 13))
+    path.close()
+
+    layer.path = path.cgPath
+
+    return image(fromLayer: layer)
+  }
+
 }

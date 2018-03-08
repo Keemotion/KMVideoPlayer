@@ -35,9 +35,22 @@ open class KMVideoPlayerViewController: UIViewController {
     activityIndicator.hidesWhenStopped = true
     return activityIndicator
   }()
+  private let controlContainerView = UIView()
   private let controlBar = KMVideoPlayerControlBar()
+  private let topLeftControlView = KMVideoPlayerControlView()
+  private let fullscreenButton = KMVideoPlayerFullscreenButton()
+
+  // fullscreen support
+  private let fullscreenWindow = UIWindow()
+  private weak var previousKeyWindow: UIWindow?
+  private var previousSuperview: UIView?
+  public var isFullscreen = false
 
   private let disposeBag = DisposeBag()
+
+  open override var prefersStatusBarHidden: Bool {
+    return true
+  }
 
   open override func viewDidLoad() {
     super.viewDidLoad()
@@ -59,7 +72,14 @@ open class KMVideoPlayerViewController: UIViewController {
   }
 
   private func setupSubviews() {
-    view.addSubview(controlBar)
+    view.addSubview(controlContainerView)
+    controlContainerView.fit()
+
+    controlContainerView.addSubview(topLeftControlView)
+    topLeftControlView.pin(to: [.top, .left], margin: KMVideoPlayerControlView.spacing)
+    topLeftControlView.stackView.addArrangedSubview(fullscreenButton)
+
+    controlContainerView.addSubview(controlBar)
 
     controlBar.pin(to: [.left, .right], margin: KMVideoPlayerControlView.spacing)
     controlBar.pin(to: .bottom, margin: KMVideoPlayerControlView.spacing)
@@ -98,6 +118,10 @@ open class KMVideoPlayerViewController: UIViewController {
     controlBar.timeSlider.rx.controlEvent(.allTouchEvents)
       .subscribe(viewModel.showControlsTrigger)
       .disposed(by: disposeBag)
+
+    fullscreenButton.rx.tap
+      .subscribe(viewModel.fullscreenTrigger)
+      .disposed(by: disposeBag)
   }
 
   private func bindViewModelOutputs() {
@@ -125,15 +149,48 @@ open class KMVideoPlayerViewController: UIViewController {
       .disposed(by: disposeBag)
 
     viewModel.hideControls.drive(onNext: { [unowned self] shouldHide in
-      guard self.controlBar.isHidden != shouldHide else { return }
-      UIView.transition(with: self.controlBar,
+      guard self.controlContainerView.isHidden != shouldHide else { return }
+      UIView.transition(with: self.controlContainerView,
                         duration: 0.1,
                         options: .transitionCrossDissolve,
                         animations: {
-                          self.controlBar.isHidden = shouldHide
+                          self.controlContainerView.isHidden = shouldHide
                         },
                         completion: nil)
     }).disposed(by: disposeBag)
+
+    viewModel.fullscreen
+      .do(onNext: { [unowned self] shouldBeFullscreen in
+        if shouldBeFullscreen {
+          guard let mainWindow = UIApplication.shared.keyWindow else { return }
+
+          self.fullscreenWindow.frame = mainWindow.frame
+          self.previousKeyWindow = mainWindow
+          self.previousSuperview = self.view.superview
+          self.view.removeFromSuperview()
+          let navigationController = UINavigationController(rootViewController: self)
+          navigationController.isNavigationBarHidden = true
+          self.fullscreenWindow.rootViewController = navigationController
+          self.fullscreenWindow.backgroundColor = UIColor.black
+          self.fullscreenWindow.makeKeyAndVisible()
+        } else {
+          self.fullscreenWindow.rootViewController = nil
+          self.willMove(toParentViewController: nil)
+          self.view.removeFromSuperview()
+          self.removeFromParentViewController()
+          if let previousSuperview = self.previousSuperview {
+            self.view.frame = previousSuperview.bounds
+            previousSuperview.addSubview(self.view)
+            self.previousSuperview = nil
+          }
+          self.fullscreenWindow.isHidden = true
+          self.previousKeyWindow?.makeKeyAndVisible()
+        }
+        self.isFullscreen = shouldBeFullscreen
+      })
+      .startWith(false)
+      .drive(fullscreenButton.rx.isFullscreen)
+      .disposed(by: disposeBag)
   }
 
   /**
@@ -175,6 +232,15 @@ open class KMVideoPlayerViewController: UIViewController {
   open func stop() {
     player.pause()
     player.removeAllItems()
+  }
+
+  /**
+   Leaves fullscreen mode
+   */
+  open func leaveFullscreen() {
+    if isFullscreen {
+      viewModel.fullscreenTrigger.onNext(())
+    }
   }
 
 }
