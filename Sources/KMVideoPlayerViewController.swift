@@ -36,7 +36,7 @@ open class KMVideoPlayerViewController: UIViewController {
     activityIndicator.hidesWhenStopped = true
     return activityIndicator
   }()
-  private let controlBar = KMVideoPlayerControlBar(frame: .zero)
+  private let controlBar = KMVideoPlayerControlBar()
 
   private let disposeBag = DisposeBag()
 
@@ -56,27 +56,21 @@ open class KMVideoPlayerViewController: UIViewController {
     super.viewWillLayoutSubviews()
 
     playerLayer.frame = view.bounds
-    showControlsButton.frame = view.bounds
   }
 
   private func setupSubviews() {
     view.addSubview(showControlsButton)
 
-    controlBar.translatesAutoresizingMaskIntoConstraints = false
+    showControlsButton.fit()
 
     view.addSubview(controlBar)
 
-    controlBar.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 8.0).isActive = true
-    controlBar.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -8.0).isActive = true
-    controlBar.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -8.0).isActive = true
-    controlBar.heightAnchor.constraint(equalToConstant: 32.0).isActive = true
-
-    loadingIndicatorView.translatesAutoresizingMaskIntoConstraints = false
+    controlBar.pin(to: [.left, .right], margin: KMVideoPlayerControlView.spacing)
+    controlBar.pin(to: .bottom, margin: KMVideoPlayerControlView.spacing)
 
     view.addSubview(loadingIndicatorView)
 
-    loadingIndicatorView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-    loadingIndicatorView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+    loadingIndicatorView.center()
   }
 
   private func bindViewModelInputs() {

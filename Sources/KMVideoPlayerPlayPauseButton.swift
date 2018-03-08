@@ -24,4 +24,8 @@ internal class KMVideoPlayerPlayPauseButton: UIButton {
     self.contentHorizontalAlignment = .center
   }
 
+  override var intrinsicContentSize: CGSize {
+    return CGSize(width: 21, height: super.intrinsicContentSize.height)
+  }
+
 }
