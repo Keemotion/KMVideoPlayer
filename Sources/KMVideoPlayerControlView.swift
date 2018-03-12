@@ -11,34 +11,35 @@ import UIKit
 
 internal class KMVideoPlayerControlView: UIView {
 
+  typealias Axis = UILayoutConstraintAxis
+
   // Spacing used between UI elements accross the player
   static let spacing: CGFloat = 8.0
 
   let stackView: UIStackView = {
     let view = UIStackView()
-    view.axis = .horizontal
     view.distribution = .fill
     view.spacing = KMVideoPlayerControlView.spacing
     return view
   }()
 
-  init() {
+  init(axis: Axis = .horizontal) {
     super.init(frame: .zero)
 
     layer.backgroundColor = UIColor(white: 36.0/255.0, alpha: 0.8).cgColor
     layer.cornerRadius = 8.0
 
     addSubview(stackView)
-    stackView.centerVertically()
+    stackView.axis = axis
+    stackView.pin(to: [.top, .bottom], margin: axis == .vertical ? KMVideoPlayerControlView.spacing : 0.0)
     stackView.pin(to: [.left, .right], margin: KMVideoPlayerControlView.spacing)
+    if axis == .horizontal {
+      stackView.heightAnchor.constraint(greaterThanOrEqualToConstant: 32.0).isActive = true
+    }
   }
 
   required init?(coder aDecoder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
-  }
-
-  override var intrinsicContentSize: CGSize {
-    return CGSize(width: UIViewNoIntrinsicMetric, height: 32)
   }
 
 }

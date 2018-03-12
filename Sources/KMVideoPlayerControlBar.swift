@@ -23,8 +23,8 @@ internal class KMVideoPlayerControlBar: KMVideoPlayerControlView {
     return label
   }
 
-  override init() {
-    super.init()
+  init() {
+    super.init(axis: .horizontal)
 
     stackView.addArrangedSubview(playPauseButton)
     stackView.addArrangedSubview(currentTimeLabel)

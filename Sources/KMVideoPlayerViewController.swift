@@ -15,6 +15,13 @@ open class KMVideoPlayerViewController: UIViewController {
 
   typealias ScrubbingState = KMVideoPlayerViewModel.ScrubbingState
 
+  public enum ControlZone {
+    case left
+    case topLeft
+    case topRight
+    case right
+  }
+
   internal let player: AVQueuePlayer = {
     let player = AVQueuePlayer()
     player.actionAtItemEnd = .pause
@@ -38,6 +45,9 @@ open class KMVideoPlayerViewController: UIViewController {
   private let controlContainerView = UIView()
   private let controlBar = KMVideoPlayerControlBar()
   private let topLeftControlView = KMVideoPlayerControlView()
+  private let topRightControlView = KMVideoPlayerControlView()
+  private let leftControlView = KMVideoPlayerControlView(axis: .vertical)
+  private let rightControlView = KMVideoPlayerControlView(axis: .vertical)
   private let fullscreenButton = KMVideoPlayerFullscreenButton()
 
   // fullscreen support
@@ -76,8 +86,20 @@ open class KMVideoPlayerViewController: UIViewController {
     controlContainerView.fit()
 
     controlContainerView.addSubview(topLeftControlView)
+    controlContainerView.addSubview(topRightControlView)
+    controlContainerView.addSubview(leftControlView)
+    controlContainerView.addSubview(rightControlView)
+
     topLeftControlView.pin(to: [.top, .left], margin: KMVideoPlayerControlView.spacing)
     topLeftControlView.stackView.addArrangedSubview(fullscreenButton)
+    topRightControlView.pin(to: [.top, .right], margin: KMVideoPlayerControlView.spacing)
+    topRightControlView.isHidden = true
+    leftControlView.pin(to: .left, margin: KMVideoPlayerControlView.spacing)
+    leftControlView.centerVertically()
+    leftControlView.isHidden = true
+    rightControlView.pin(to: .right, margin: KMVideoPlayerControlView.spacing)
+    rightControlView.centerVertically()
+    rightControlView.isHidden = true
 
     controlContainerView.addSubview(controlBar)
 
@@ -241,6 +263,40 @@ open class KMVideoPlayerViewController: UIViewController {
     if isFullscreen {
       viewModel.fullscreenTrigger.onNext(())
     }
+  }
+
+  private func controlView(forZone zone: ControlZone) -> KMVideoPlayerControlView {
+    switch zone {
+    case .left: return leftControlView
+    case .topLeft: return topLeftControlView
+    case .topRight: return topRightControlView
+    case .right: return rightControlView
+    }
+  }
+
+  /**
+   Adds a view into one of the control zones
+
+   - parameters:
+      - controlView: A view to add
+      - inZone: Control zone where the view should be added
+      - at: The index where the view should be inserted
+   - important: Calling this doesn't make the zone automatically visible
+  */
+  open func add(controlView view: UIView, inZone zone: ControlZone, at index: Int) {
+    controlView(forZone: zone).stackView.insertArrangedSubview(view, at: index)
+  }
+
+  /**
+   Makes the control zone hidden
+
+   - parameters:
+      - zone: One of the control zones
+      - hidden: Boolean value that determines whether the zone is hidden or visible
+   - important: Even if visible, the control zone will still automatically hide while playing
+  */
+  open func set(zone: ControlZone, hidden: Bool) {
+    controlView(forZone: zone).isHidden = hidden
   }
 
 }
