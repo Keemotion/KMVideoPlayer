@@ -25,7 +25,7 @@ internal class KMVideoPlayerPlayPauseButton: UIButton {
   }
 
   override var intrinsicContentSize: CGSize {
-    return CGSize(width: 21, height: super.intrinsicContentSize.height)
+    return CGSize(width: 44, height: super.intrinsicContentSize.height)
   }
 
 }

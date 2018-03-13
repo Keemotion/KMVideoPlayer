@@ -25,8 +25,8 @@ internal class KMVideoPlayerControlView: UIView {
   init() {
     super.init(frame: .zero)
 
-    layer.backgroundColor = UIColor(white: 36.0/255.0, alpha: 1.0).cgColor
-    layer.cornerRadius = 10.0
+    layer.backgroundColor = UIColor(white: 36.0/255.0, alpha: 0.8).cgColor
+    layer.cornerRadius = 8.0
 
     addSubview(stackView)
     stackView.centerVertically()
