@@ -134,6 +134,15 @@ open class KMVideoPlayerViewController: UIViewController {
     }).disposed(by: disposeBag)
   }
 
+  /**
+   Queues the video file present at the specified URL and starts playing
+
+   - parameters:
+      - fileAtURL: An URL referencing either a local or remote video file
+      - startImmediately: If the file should start playing immediately
+   - returns: True if the file could be queued
+   - important: Clears any previously playing file
+   */
   open func play(fileAtURL url: URL, startImmediately: Bool = true) -> Bool {
     let playerItem = AVPlayerItem(url: url)
 
@@ -151,10 +160,16 @@ open class KMVideoPlayerViewController: UIViewController {
     return true
   }
 
+  /**
+   Pauses the player
+   */
   open func pause() {
     player.pause()
   }
 
+  /**
+   Stops the player and clears the current item
+   */
   open func stop() {
     player.pause()
     player.removeAllItems()
