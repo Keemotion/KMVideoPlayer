@@ -1,0 +1,618 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		52157BA42047F61C00617FB9 /* UIImage+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52157BA32047F61C00617FB9 /* UIImage+Additions.swift */; };
+		52157BA62048021400617FB9 /* KMVideoPlayerPlayPauseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52157BA52048021400617FB9 /* KMVideoPlayerPlayPauseButton.swift */; };
+		52157BA82048074100617FB9 /* KMVideoPlayerPlayPauseButton+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52157BA72048074100617FB9 /* KMVideoPlayerPlayPauseButton+Rx.swift */; };
+		52270A692046BA9A00488C79 /* KMVideoPlayerViewController+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52270A682046BA9A00488C79 /* KMVideoPlayerViewController+Rx.swift */; };
+		52270A6D2046F2B400488C79 /* UISlider+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52270A6C2046F2B400488C79 /* UISlider+Rx.swift */; };
+		52270A712046FC1800488C79 /* KMVideoPlayerSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52270A702046FC1800488C79 /* KMVideoPlayerSlider.swift */; };
+		523DA67D2040226500C4D64C /* KMVideoPlayer.h in Headers */ = {isa = PBXBuildFile; fileRef = 523DA67B2040226500C4D64C /* KMVideoPlayer.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5241C69620405F8200BCA5FE /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5241C69420405F8200BCA5FE /* RxCocoa.framework */; };
+		5241C69720405F8200BCA5FE /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5241C69520405F8200BCA5FE /* RxSwift.framework */; };
+		52626315204D479200D29502 /* KMVideoPlayerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52626314204D479200D29502 /* KMVideoPlayerViewModel.swift */; };
+		52AAAF21204043C3008AAB74 /* KMVideoPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AAAF20204043C3008AAB74 /* KMVideoPlayerViewController.swift */; };
+		52BF19D020446E26008ACB1D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52BF19CF20446E26008ACB1D /* AppDelegate.swift */; };
+		52BF19D220446E26008ACB1D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52BF19D120446E26008ACB1D /* ViewController.swift */; };
+		52BF19D520446E26008ACB1D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 52BF19D320446E26008ACB1D /* Main.storyboard */; };
+		52BF19D720446E26008ACB1D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 52BF19D620446E26008ACB1D /* Assets.xcassets */; };
+		52BF19DA20446E26008ACB1D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 52BF19D820446E26008ACB1D /* LaunchScreen.storyboard */; };
+		52BF19E120446ED6008ACB1D /* KMVideoPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 523DA6782040226500C4D64C /* KMVideoPlayer.framework */; };
+		52BF19E320446EEF008ACB1D /* KMVideoPlayer.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 523DA6782040226500C4D64C /* KMVideoPlayer.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		52F08A5020456D1100430F79 /* AVPlayerLayer+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52F08A4F20456D1100430F79 /* AVPlayerLayer+Rx.swift */; };
+		52F08A522045717E00430F79 /* AVPlayerItem+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52F08A512045717E00430F79 /* AVPlayerItem+Rx.swift */; };
+		52F08A552045980C00430F79 /* AVPlayer+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52F08A542045980C00430F79 /* AVPlayer+Rx.swift */; };
+		52F08A592045A9E500430F79 /* KMVideoPlayerControlBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52F08A582045A9E500430F79 /* KMVideoPlayerControlBar.swift */; };
+		52F08A5C2045B39700430F79 /* CMTime+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52F08A5B2045B39700430F79 /* CMTime+Additions.swift */; };
+		52FD0DCB20514B0E003C0411 /* KMVideoPlayerControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52FD0DCA20514B0E003C0411 /* KMVideoPlayerControlView.swift */; };
+		52FD0DCD20515108003C0411 /* UIView+AutoLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52FD0DCC20515108003C0411 /* UIView+AutoLayout.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		52BF19DF20446ED1008ACB1D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 523DA66F2040226500C4D64C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 523DA6772040226500C4D64C;
+			remoteInfo = KMVideoPlayer;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		52BF19E220446EE3008ACB1D /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				52BF19E320446EEF008ACB1D /* KMVideoPlayer.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		52157BA32047F61C00617FB9 /* UIImage+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Additions.swift"; sourceTree = "<group>"; };
+		52157BA52048021400617FB9 /* KMVideoPlayerPlayPauseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KMVideoPlayerPlayPauseButton.swift; sourceTree = "<group>"; };
+		52157BA72048074100617FB9 /* KMVideoPlayerPlayPauseButton+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KMVideoPlayerPlayPauseButton+Rx.swift"; sourceTree = "<group>"; };
+		52270A682046BA9A00488C79 /* KMVideoPlayerViewController+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KMVideoPlayerViewController+Rx.swift"; sourceTree = "<group>"; };
+		52270A6C2046F2B400488C79 /* UISlider+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UISlider+Rx.swift"; sourceTree = "<group>"; };
+		52270A702046FC1800488C79 /* KMVideoPlayerSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KMVideoPlayerSlider.swift; sourceTree = "<group>"; };
+		523DA6782040226500C4D64C /* KMVideoPlayer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = KMVideoPlayer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		523DA67B2040226500C4D64C /* KMVideoPlayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KMVideoPlayer.h; sourceTree = "<group>"; };
+		523DA67C2040226500C4D64C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5241C69420405F8200BCA5FE /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCocoa.framework; path = Carthage/Build/iOS/RxCocoa.framework; sourceTree = "<group>"; };
+		5241C69520405F8200BCA5FE /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/iOS/RxSwift.framework; sourceTree = "<group>"; };
+		52626314204D479200D29502 /* KMVideoPlayerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KMVideoPlayerViewModel.swift; sourceTree = "<group>"; };
+		52AAAF20204043C3008AAB74 /* KMVideoPlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KMVideoPlayerViewController.swift; sourceTree = "<group>"; };
+		52BF19CD20446E25008ACB1D /* DemoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DemoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		52BF19CF20446E26008ACB1D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		52BF19D120446E26008ACB1D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		52BF19D420446E26008ACB1D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		52BF19D620446E26008ACB1D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		52BF19D920446E26008ACB1D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		52BF19DB20446E26008ACB1D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		52F08A4F20456D1100430F79 /* AVPlayerLayer+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AVPlayerLayer+Rx.swift"; sourceTree = "<group>"; };
+		52F08A512045717E00430F79 /* AVPlayerItem+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AVPlayerItem+Rx.swift"; sourceTree = "<group>"; };
+		52F08A542045980C00430F79 /* AVPlayer+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AVPlayer+Rx.swift"; sourceTree = "<group>"; };
+		52F08A582045A9E500430F79 /* KMVideoPlayerControlBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KMVideoPlayerControlBar.swift; sourceTree = "<group>"; };
+		52F08A5B2045B39700430F79 /* CMTime+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CMTime+Additions.swift"; sourceTree = "<group>"; };
+		52FD0DCA20514B0E003C0411 /* KMVideoPlayerControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KMVideoPlayerControlView.swift; sourceTree = "<group>"; };
+		52FD0DCC20515108003C0411 /* UIView+AutoLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+AutoLayout.swift"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		523DA6742040226500C4D64C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5241C69620405F8200BCA5FE /* RxCocoa.framework in Frameworks */,
+				5241C69720405F8200BCA5FE /* RxSwift.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		52BF19CA20446E25008ACB1D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				52BF19E120446ED6008ACB1D /* KMVideoPlayer.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		523DA66E2040226500C4D64C = {
+			isa = PBXGroup;
+			children = (
+				523DA67A2040226500C4D64C /* KMVideoPlayer */,
+				52BF19CE20446E26008ACB1D /* DemoApp */,
+				523DA6792040226500C4D64C /* Products */,
+				5241C69320405F8200BCA5FE /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		523DA6792040226500C4D64C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				523DA6782040226500C4D64C /* KMVideoPlayer.framework */,
+				52BF19CD20446E25008ACB1D /* DemoApp.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		523DA67A2040226500C4D64C /* KMVideoPlayer */ = {
+			isa = PBXGroup;
+			children = (
+				523DA67B2040226500C4D64C /* KMVideoPlayer.h */,
+				52AAAF20204043C3008AAB74 /* KMVideoPlayerViewController.swift */,
+				52626314204D479200D29502 /* KMVideoPlayerViewModel.swift */,
+				52FD0DCA20514B0E003C0411 /* KMVideoPlayerControlView.swift */,
+				52F08A582045A9E500430F79 /* KMVideoPlayerControlBar.swift */,
+				52157BA52048021400617FB9 /* KMVideoPlayerPlayPauseButton.swift */,
+				52270A702046FC1800488C79 /* KMVideoPlayerSlider.swift */,
+				52F08A4F20456D1100430F79 /* AVPlayerLayer+Rx.swift */,
+				52F08A542045980C00430F79 /* AVPlayer+Rx.swift */,
+				52F08A512045717E00430F79 /* AVPlayerItem+Rx.swift */,
+				52270A682046BA9A00488C79 /* KMVideoPlayerViewController+Rx.swift */,
+				52157BA72048074100617FB9 /* KMVideoPlayerPlayPauseButton+Rx.swift */,
+				52270A6C2046F2B400488C79 /* UISlider+Rx.swift */,
+				52F08A5B2045B39700430F79 /* CMTime+Additions.swift */,
+				52157BA32047F61C00617FB9 /* UIImage+Additions.swift */,
+				52FD0DCC20515108003C0411 /* UIView+AutoLayout.swift */,
+				523DA67C2040226500C4D64C /* Info.plist */,
+			);
+			name = KMVideoPlayer;
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		5241C69320405F8200BCA5FE /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5241C69420405F8200BCA5FE /* RxCocoa.framework */,
+				5241C69520405F8200BCA5FE /* RxSwift.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		52BF19CE20446E26008ACB1D /* DemoApp */ = {
+			isa = PBXGroup;
+			children = (
+				52BF19CF20446E26008ACB1D /* AppDelegate.swift */,
+				52BF19D120446E26008ACB1D /* ViewController.swift */,
+				52BF19D320446E26008ACB1D /* Main.storyboard */,
+				52BF19D620446E26008ACB1D /* Assets.xcassets */,
+				52BF19D820446E26008ACB1D /* LaunchScreen.storyboard */,
+				52BF19DB20446E26008ACB1D /* Info.plist */,
+			);
+			path = DemoApp;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		523DA6752040226500C4D64C /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				523DA67D2040226500C4D64C /* KMVideoPlayer.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		523DA6772040226500C4D64C /* KMVideoPlayer */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 523DA6802040226500C4D64C /* Build configuration list for PBXNativeTarget "KMVideoPlayer" */;
+			buildPhases = (
+				523DA6732040226500C4D64C /* Sources */,
+				523DA6742040226500C4D64C /* Frameworks */,
+				523DA6752040226500C4D64C /* Headers */,
+				523DA6762040226500C4D64C /* Resources */,
+				5241C6992040613800BCA5FE /* Swiftlint */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = KMVideoPlayer;
+			productName = KMVideoPlayer;
+			productReference = 523DA6782040226500C4D64C /* KMVideoPlayer.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		52BF19CC20446E25008ACB1D /* DemoApp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 52BF19DC20446E26008ACB1D /* Build configuration list for PBXNativeTarget "DemoApp" */;
+			buildPhases = (
+				52BF19C920446E25008ACB1D /* Sources */,
+				52BF19CA20446E25008ACB1D /* Frameworks */,
+				52BF19CB20446E25008ACB1D /* Resources */,
+				52BF19E220446EE3008ACB1D /* CopyFiles */,
+				529AAAC72050043900BC3D2B /* Copy Carthage Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				52BF19E020446ED1008ACB1D /* PBXTargetDependency */,
+			);
+			name = DemoApp;
+			productName = DemoApp;
+			productReference = 52BF19CD20446E25008ACB1D /* DemoApp.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		523DA66F2040226500C4D64C /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0920;
+				LastUpgradeCheck = 0920;
+				ORGANIZATIONNAME = "Keemotion SPRL";
+				TargetAttributes = {
+					523DA6772040226500C4D64C = {
+						CreatedOnToolsVersion = 9.2;
+						LastSwiftMigration = 0920;
+						ProvisioningStyle = Automatic;
+					};
+					52BF19CC20446E25008ACB1D = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 523DA6722040226500C4D64C /* Build configuration list for PBXProject "KMVideoPlayer" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 523DA66E2040226500C4D64C;
+			productRefGroup = 523DA6792040226500C4D64C /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				523DA6772040226500C4D64C /* KMVideoPlayer */,
+				52BF19CC20446E25008ACB1D /* DemoApp */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		523DA6762040226500C4D64C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		52BF19CB20446E25008ACB1D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				52BF19DA20446E26008ACB1D /* LaunchScreen.storyboard in Resources */,
+				52BF19D720446E26008ACB1D /* Assets.xcassets in Resources */,
+				52BF19D520446E26008ACB1D /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		5241C6992040613800BCA5FE /* Swiftlint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = Swiftlint;
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\n    swiftlint\nelse\n    echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi";
+		};
+		529AAAC72050043900BC3D2B /* Copy Carthage Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/RxSwift.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/RxCocoa.framework",
+			);
+			name = "Copy Carthage Frameworks";
+			outputPaths = (
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/RxSwift.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/RxCocoa.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		523DA6732040226500C4D64C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				52AAAF21204043C3008AAB74 /* KMVideoPlayerViewController.swift in Sources */,
+				52FD0DCD20515108003C0411 /* UIView+AutoLayout.swift in Sources */,
+				52FD0DCB20514B0E003C0411 /* KMVideoPlayerControlView.swift in Sources */,
+				52F08A552045980C00430F79 /* AVPlayer+Rx.swift in Sources */,
+				52270A712046FC1800488C79 /* KMVideoPlayerSlider.swift in Sources */,
+				52270A6D2046F2B400488C79 /* UISlider+Rx.swift in Sources */,
+				52F08A5C2045B39700430F79 /* CMTime+Additions.swift in Sources */,
+				52F08A5020456D1100430F79 /* AVPlayerLayer+Rx.swift in Sources */,
+				52F08A522045717E00430F79 /* AVPlayerItem+Rx.swift in Sources */,
+				52F08A592045A9E500430F79 /* KMVideoPlayerControlBar.swift in Sources */,
+				52270A692046BA9A00488C79 /* KMVideoPlayerViewController+Rx.swift in Sources */,
+				52626315204D479200D29502 /* KMVideoPlayerViewModel.swift in Sources */,
+				52157BA82048074100617FB9 /* KMVideoPlayerPlayPauseButton+Rx.swift in Sources */,
+				52157BA62048021400617FB9 /* KMVideoPlayerPlayPauseButton.swift in Sources */,
+				52157BA42047F61C00617FB9 /* UIImage+Additions.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		52BF19C920446E25008ACB1D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				52BF19D220446E26008ACB1D /* ViewController.swift in Sources */,
+				52BF19D020446E26008ACB1D /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		52BF19E020446ED1008ACB1D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 523DA6772040226500C4D64C /* KMVideoPlayer */;
+			targetProxy = 52BF19DF20446ED1008ACB1D /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		52BF19D320446E26008ACB1D /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				52BF19D420446E26008ACB1D /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		52BF19D820446E26008ACB1D /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				52BF19D920446E26008ACB1D /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		523DA67E2040226500C4D64C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		523DA67F2040226500C4D64C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		523DA6812040226500C4D64C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = GC7MT55UTU;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
+				INFOPLIST_FILE = Sources/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.keemotion.KMVideoPlayer;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		523DA6822040226500C4D64C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = GC7MT55UTU;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
+				INFOPLIST_FILE = Sources/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.keemotion.KMVideoPlayer;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		52BF19DD20446E26008ACB1D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = GC7MT55UTU;
+				INFOPLIST_FILE = DemoApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.keemotion.DemoApp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		52BF19DE20446E26008ACB1D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = GC7MT55UTU;
+				INFOPLIST_FILE = DemoApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.keemotion.DemoApp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		523DA6722040226500C4D64C /* Build configuration list for PBXProject "KMVideoPlayer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				523DA67E2040226500C4D64C /* Debug */,
+				523DA67F2040226500C4D64C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		523DA6802040226500C4D64C /* Build configuration list for PBXNativeTarget "KMVideoPlayer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				523DA6812040226500C4D64C /* Debug */,
+				523DA6822040226500C4D64C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		52BF19DC20446E26008ACB1D /* Build configuration list for PBXNativeTarget "DemoApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				52BF19DD20446E26008ACB1D /* Debug */,
+				52BF19DE20446E26008ACB1D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 523DA66F2040226500C4D64C /* Project object */;
+}

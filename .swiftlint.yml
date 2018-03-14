@@ -1,0 +1,5 @@
+included:
+  - Sources
+function_body_length:
+  - 80 # warning
+  - 100 # error
