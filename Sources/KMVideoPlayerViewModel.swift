@@ -45,7 +45,7 @@ internal final class KMVideoPlayerViewModel {
 
   let currentTime: Driver<String>
 
-  let currentValue: Driver<Float>
+  let currentProgress: Driver<Float>
 
   let maximumValue: Driver<Float>
 
@@ -92,7 +92,7 @@ internal final class KMVideoPlayerViewModel {
       .map { $0.timeString }
       .asDriver(onErrorJustReturn: "0:00")
 
-    self.currentValue = player.rx.currentTime
+    self.currentProgress = player.rx.currentTime
       .withLatestFrom(isScrubbing.map { $0.scrubbing }) { ($0, $1) }
       .flatMap { (time, scrubbing) -> Observable<Float> in
         if scrubbing {

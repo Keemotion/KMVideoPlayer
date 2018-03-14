@@ -112,7 +112,7 @@ open class KMVideoPlayerViewController: UIViewController {
       .drive(controlBar.currentTimeLabel.rx.text)
       .disposed(by: disposeBag)
 
-    viewModel.currentValue
+    viewModel.currentProgress
       .drive(controlBar.timeSlider.rx.value)
       .disposed(by: disposeBag)
 
