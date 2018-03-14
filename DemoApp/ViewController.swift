@@ -26,7 +26,9 @@ class ViewController: UIViewController {
     topView.addSubview(player.view)
 
     let url = URL(string: "https://devstreaming-cdn.apple.com/videos/streaming/examples/img_bipbop_adv_example_ts/master.m3u8")!
-    _ = player.play(fileAtURL: url)
+    if !player.play(fileAtURL: url) {
+      print("Cannot play video at \(url)")
+    }
 
     otherPlayer.view.frame = bottomView.bounds
     bottomView.addSubview(otherPlayer.view)
