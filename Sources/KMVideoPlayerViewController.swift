@@ -30,7 +30,6 @@ open class KMVideoPlayerViewController: UIViewController {
                                                       layer: self.playerLayer)
 
   // controls & ui
-  private let showControlsButton = UIButton()
   private let loadingIndicatorView: UIActivityIndicatorView = {
     let activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .whiteLarge)
     activityIndicator.hidesWhenStopped = true
@@ -47,6 +46,7 @@ open class KMVideoPlayerViewController: UIViewController {
     view.layer.insertSublayer(playerLayer, at: 0)
 
     setupSubviews()
+    setupTapGesture()
 
     bindViewModelInputs()
     bindViewModelOutputs()
@@ -59,10 +59,6 @@ open class KMVideoPlayerViewController: UIViewController {
   }
 
   private func setupSubviews() {
-    view.addSubview(showControlsButton)
-
-    showControlsButton.fit()
-
     view.addSubview(controlBar)
 
     controlBar.pin(to: [.left, .right], margin: KMVideoPlayerControlView.spacing)
@@ -73,11 +69,17 @@ open class KMVideoPlayerViewController: UIViewController {
     loadingIndicatorView.center()
   }
 
-  private func bindViewModelInputs() {
-    showControlsButton.rx.tap
-      .subscribe(viewModel.showControlsTrigger)
-      .disposed(by: disposeBag)
+  private func setupTapGesture() {
+    let tapGesture = UITapGestureRecognizer(target: self, action: #selector(showControlsTap))
+    view.isUserInteractionEnabled = true
+    view.addGestureRecognizer(tapGesture)
+  }
 
+  @objc private func showControlsTap() {
+    viewModel.showControlsTrigger.onNext(())
+  }
+
+  private func bindViewModelInputs() {
     controlBar.playPauseButton.rx.tap
       .subscribe(viewModel.playPauseTrigger)
       .disposed(by: disposeBag)
