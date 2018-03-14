@@ -2,6 +2,7 @@
 //  AVPlayerLayer+Rx.swift
 //  KMVideoPlayer
 //
+//  Inspired by RxAVFoundation
 //  Created by Valérian Buyck on 27/02/2018.
 //  Copyright © 2018 Keemotion SPRL. All rights reserved.
 //

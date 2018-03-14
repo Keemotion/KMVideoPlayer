@@ -2,6 +2,7 @@
 //  UIView+AutoLayout.swift
 //  KMVideoPlayer
 //
+//  PureLayout inspired these convenience methods to handle auto layout
 //  Created by Valérian Buyck on 08/03/2018.
 //  Copyright © 2018 Keemotion SPRL. All rights reserved.
 //
