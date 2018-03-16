@@ -38,6 +38,8 @@ internal final class KMVideoPlayerViewModel {
 
   let showControlsTrigger: AnyObserver<Void>
 
+  let fullscreenTrigger: AnyObserver<Void>
+
   // MARK: - Outputs
   let animateLoadingIndicator: Driver<Bool>
 
@@ -52,6 +54,8 @@ internal final class KMVideoPlayerViewModel {
   let duration: Driver<String>
 
   let hideControls: Driver<Bool>
+
+  let fullscreen: Driver<Bool>
 
   init(player: AVPlayer, layer: AVPlayerLayer) {
     let _playPause = PublishSubject<Void>()
@@ -88,6 +92,9 @@ internal final class KMVideoPlayerViewModel {
     let showControls = PublishSubject<Void>()
     self.showControlsTrigger = showControls.asObserver()
 
+    let fullscreen = PublishSubject<Void>()
+    self.fullscreenTrigger = fullscreen.asObserver()
+
     self.currentTime = player.rx.currentTime
       .map { $0.timeString }
       .asDriver(onErrorJustReturn: "0:00")
@@ -118,7 +125,8 @@ internal final class KMVideoPlayerViewModel {
     let uiTriggers: [Observable<Void>] = [
       playPause,
       scrubbing.map { _ in () },
-      showControls
+      showControls,
+      fullscreen
     ]
     self.hideControls = Observable.merge(uiTriggers)
       .startWith(())
@@ -139,6 +147,11 @@ internal final class KMVideoPlayerViewModel {
 
     self.isPlaying = player.rx.rate.map { $0 > 0 }
       .asDriver(onErrorJustReturn: false)
+
+    self.fullscreen = fullscreen.scan(false) { previous, _ in
+        return !previous
+      }
+      .asDriver(onErrorDriveWith: .empty())
   }
 
 }

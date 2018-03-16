@@ -7,7 +7,7 @@ The implementation relies heavily on `RxSwift` internally and the goal is eventu
 ## Features
 - [x] Support basic playback (play/pause and seeking)
 - [x] Controls automatically hide while playing
-- [ ] Support fullscreen
+- [x] Support fullscreen
 - [ ] Support additionnal custom UI controls
 - [ ] Queue items to play
 - [ ] Functional Rx API
