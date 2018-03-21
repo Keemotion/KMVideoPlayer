@@ -23,7 +23,7 @@ internal class KMVideoPlayerControlView: UIView {
     return view
   }()
 
-  init(axis: Axis = .horizontal) {
+  init(axis: Axis) {
     super.init(frame: .zero)
 
     layer.backgroundColor = UIColor(white: 36.0/255.0, alpha: 0.8).cgColor
