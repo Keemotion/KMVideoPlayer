@@ -54,7 +54,6 @@ open class KMVideoPlayerViewController: UIViewController {
   private let fullscreenWindow = UIWindow()
   private weak var previousKeyWindow: UIWindow?
   private var previousSuperview: UIView?
-  public var isFullscreen = false
 
   private let disposeBag = DisposeBag()
 
@@ -208,7 +207,6 @@ open class KMVideoPlayerViewController: UIViewController {
           self.fullscreenWindow.isHidden = true
           self.previousKeyWindow?.makeKeyAndVisible()
         }
-        self.isFullscreen = shouldBeFullscreen
       })
       .startWith(false)
       .drive(fullscreenButton.rx.isFullscreen)
@@ -257,11 +255,22 @@ open class KMVideoPlayerViewController: UIViewController {
   }
 
   /**
-   Leaves fullscreen mode
+   Indicates if the player is in fullscreen mode
+   Changing the value causes the player to enter or leave fullscreen mode
    */
-  open func leaveFullscreen() {
-    if isFullscreen {
-      viewModel.fullscreenTrigger.onNext(())
+  open var fullscreen: Bool {
+    get {
+      var isFullscreen = false
+      // Driver shares with replay so we can synchronously retrieve last value
+      viewModel.fullscreen
+        .drive(onNext: { isFullscreen = $0 })
+        .dispose()
+      return isFullscreen
+    }
+    set {
+      if newValue != fullscreen {
+        viewModel.fullscreenTrigger.onNext(())
+      }
     }
   }
 
