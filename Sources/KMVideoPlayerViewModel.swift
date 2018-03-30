@@ -43,19 +43,11 @@ internal final class KMVideoPlayerViewModel {
   // MARK: - Outputs
   let animateLoadingIndicator: Driver<Bool>
 
-  let isPlaying: Driver<Bool>
-
-  let currentTime: Driver<String>
-
-  let currentProgress: Driver<Float>
-
-  let maximumValue: Driver<Float>
-
-  let duration: Driver<String>
-
   let hideControls: Driver<Bool>
 
   let fullscreen: Driver<Bool>
+
+  let controlBarOutputs: ControlBarOutputs
 
   init(player: AVPlayer, layer: AVPlayerLayer) {
     let _playPause = PublishSubject<Void>()
@@ -95,32 +87,6 @@ internal final class KMVideoPlayerViewModel {
     let fullscreen = PublishSubject<Void>()
     self.fullscreenTrigger = fullscreen.asObserver()
 
-    self.currentTime = player.rx.currentTime
-      .map { $0.timeString }
-      .asDriver(onErrorJustReturn: "0:00")
-
-    self.currentProgress = player.rx.currentTime
-      .withLatestFrom(isScrubbing.map { $0.scrubbing }) { ($0, $1) }
-      .flatMap { (time, scrubbing) -> Observable<Float> in
-        if scrubbing {
-          return .empty()
-        } else {
-          return .just(Float(time.seconds))
-        }
-      }
-      .asDriver(onErrorJustReturn: 0.0)
-
-    let duration = player.rx.currentItem
-      .flatMap { $0.rx.duration }
-      .filter { $0.isNumeric }
-      .share()
-
-    self.maximumValue = duration.map { Float($0.seconds) }
-      .asDriver(onErrorJustReturn: 0)
-
-    self.duration = duration.map { $0.timeString }
-      .asDriver(onErrorJustReturn: "0:00")
-
     // hide controls if playing for more than 2 secs and there is no UI interaction
     let uiTriggers: [Observable<Void>] = [
       playPause,
@@ -145,13 +111,12 @@ internal final class KMVideoPlayerViewModel {
     self.animateLoadingIndicator = layer.rx.readyForDisplay.map { !$0 }
       .asDriver(onErrorJustReturn: false)
 
-    self.isPlaying = player.rx.rate.map { $0 > 0 }
-      .asDriver(onErrorJustReturn: false)
-
     self.fullscreen = fullscreen.scan(false) { previous, _ in
         return !previous
       }
       .asDriver(onErrorDriveWith: .empty())
+
+    self.controlBarOutputs = ControlBarOutputs(player: player, isScrubbing: isScrubbing.map { $0.scrubbing })
   }
 
 }

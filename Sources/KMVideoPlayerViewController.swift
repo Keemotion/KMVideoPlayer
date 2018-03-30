@@ -149,26 +149,6 @@ open class KMVideoPlayerViewController: UIViewController {
     viewModel.animateLoadingIndicator.drive(loadingIndicatorView.rx.isAnimating)
       .disposed(by: disposeBag)
 
-    viewModel.isPlaying
-      .drive(controlBar.playPauseButton.rx.isPlaying)
-      .disposed(by: disposeBag)
-
-    viewModel.currentTime
-      .drive(controlBar.currentTimeLabel.rx.text)
-      .disposed(by: disposeBag)
-
-    viewModel.currentProgress
-      .drive(controlBar.timeSlider.rx.value)
-      .disposed(by: disposeBag)
-
-    viewModel.maximumValue
-      .drive(controlBar.timeSlider.rx.maximumValue)
-      .disposed(by: disposeBag)
-
-    viewModel.duration
-      .drive(controlBar.durationLabel.rx.text)
-      .disposed(by: disposeBag)
-
     viewModel.hideControls.drive(onNext: { [unowned self] shouldHide in
       guard self.controlContainerView.isHidden != shouldHide else { return }
       UIView.transition(with: self.controlContainerView,
@@ -210,6 +190,9 @@ open class KMVideoPlayerViewController: UIViewController {
       })
       .startWith(false)
       .drive(fullscreenButton.rx.isFullscreen)
+      .disposed(by: disposeBag)
+
+    controlBar.bind(viewModel.controlBarOutputs)
       .disposed(by: disposeBag)
   }
 
