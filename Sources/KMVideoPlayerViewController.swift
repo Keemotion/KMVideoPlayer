@@ -13,7 +13,7 @@ import RxCocoa
 
 open class KMVideoPlayerViewController: UIViewController {
 
-  typealias ScrubbingState = KMVideoPlayerViewModel.ScrubbingState
+  typealias PlayerAction = KMVideoPlayerViewModel.PlayerAction
 
   public enum ControlZone {
     case left
@@ -121,19 +121,20 @@ open class KMVideoPlayerViewController: UIViewController {
   }
 
   private func bindViewModelInputs() {
-    controlBar.playPauseButton.rx.tap
-      .subscribe(viewModel.playPauseTrigger)
-      .disposed(by: disposeBag)
+    let playPause = controlBar.playPauseButton.rx.tap
+      .withLatestFrom(viewModel.playerState.map { $0.isPlaying }.asObservable())
+      .map { $0 ? PlayerAction.pause : PlayerAction.play }
 
     let slider = controlBar.timeSlider
-    let startObservable = slider.rx.controlEvent(.touchDown)
-      .map { ScrubbingState.start }
-    let stopObservable = slider.rx.controlEvent(.touchUpInside)
-      .map { ScrubbingState.stop }
-    let timeObservable = slider.rx.controlEvent(.valueChanged)
-      .map { ScrubbingState.scrub(time: slider.value) }
-    Observable.merge(startObservable, stopObservable, timeObservable)
-      .subscribe(viewModel.scrubbingTrigger)
+    let startScrubbing = slider.rx.controlEvent(.touchDown)
+      .map { PlayerAction.startScrubbing }
+    let stopScrubbing = slider.rx.controlEvent(.touchUpInside)
+      .map { PlayerAction.stopScrubbing }
+    let scrub = slider.rx.controlEvent(.valueChanged)
+      .map { PlayerAction.scrub(time: slider.value) }
+
+    Observable.merge(playPause, startScrubbing, stopScrubbing, scrub)
+      .subscribe(viewModel.playerActionTrigger)
       .disposed(by: disposeBag)
 
     controlBar.timeSlider.rx.controlEvent(.allTouchEvents)
@@ -208,15 +209,15 @@ open class KMVideoPlayerViewController: UIViewController {
   open func play(fileAtURL url: URL, startImmediately: Bool = true) -> Bool {
     let playerItem = AVPlayerItem(url: url)
 
-    player.removeAllItems()
+    viewModel.playerActionTrigger.onNext(.stop)
 
     guard player.canInsert(playerItem, after: nil) else {
       return false
     }
 
-    player.insert(playerItem, after: nil)
+    viewModel.playerActionTrigger.onNext(.queue(item: playerItem))
     if startImmediately {
-      player.play()
+      viewModel.playerActionTrigger.onNext(.play)
     }
 
     return true
@@ -226,15 +227,14 @@ open class KMVideoPlayerViewController: UIViewController {
    Pauses the player
    */
   open func pause() {
-    player.pause()
+    viewModel.playerActionTrigger.onNext(.pause)
   }
 
   /**
    Stops the player and clears the current item
    */
   open func stop() {
-    player.pause()
-    player.removeAllItems()
+    viewModel.playerActionTrigger.onNext(.stop)
   }
 
   /**
