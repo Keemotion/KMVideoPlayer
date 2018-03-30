@@ -8,6 +8,8 @@
 
 import Foundation
 import UIKit
+import RxSwift
+import RxCocoa
 
 internal class KMVideoPlayerControlBar: KMVideoPlayerControlView {
   let playPauseButton = KMVideoPlayerPlayPauseButton()
@@ -34,6 +36,21 @@ internal class KMVideoPlayerControlBar: KMVideoPlayerControlView {
 
   required init?(coder aDecoder: NSCoder) {
     fatalError()
+  }
+
+  func bind(_ outputs: KMVideoPlayerViewModel.ControlBarOutputs) -> CompositeDisposable {
+    return CompositeDisposable(disposables: [
+      outputs.isPlaying
+        .drive(playPauseButton.rx.isPlaying),
+      outputs.currentTime
+        .drive(currentTimeLabel.rx.text),
+      outputs.currentProgress
+        .drive(timeSlider.rx.value),
+      outputs.maximumValue
+        .drive(timeSlider.rx.maximumValue),
+      outputs.duration
+        .drive(durationLabel.rx.text)
+    ])
   }
 
 }

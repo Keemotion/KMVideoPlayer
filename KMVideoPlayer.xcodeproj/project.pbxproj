@@ -17,6 +17,8 @@
 		5241C69620405F8200BCA5FE /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5241C69420405F8200BCA5FE /* RxCocoa.framework */; };
 		5241C69720405F8200BCA5FE /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5241C69520405F8200BCA5FE /* RxSwift.framework */; };
 		52626315204D479200D29502 /* KMVideoPlayerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52626314204D479200D29502 /* KMVideoPlayerViewModel.swift */; };
+		528DC9B0206E593100E56032 /* KMVideoPlayerViewModel+ControlBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 528DC9AF206E593100E56032 /* KMVideoPlayerViewModel+ControlBar.swift */; };
+		528DC9B2206E635700E56032 /* KMVideoPlayerStateMachine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 528DC9B1206E635700E56032 /* KMVideoPlayerStateMachine.swift */; };
 		52AAAF21204043C3008AAB74 /* KMVideoPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AAAF20204043C3008AAB74 /* KMVideoPlayerViewController.swift */; };
 		52BF19D020446E26008ACB1D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52BF19CF20446E26008ACB1D /* AppDelegate.swift */; };
 		52BF19D220446E26008ACB1D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52BF19D120446E26008ACB1D /* ViewController.swift */; };
@@ -72,6 +74,8 @@
 		5241C69420405F8200BCA5FE /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCocoa.framework; path = Carthage/Build/iOS/RxCocoa.framework; sourceTree = "<group>"; };
 		5241C69520405F8200BCA5FE /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/iOS/RxSwift.framework; sourceTree = "<group>"; };
 		52626314204D479200D29502 /* KMVideoPlayerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KMVideoPlayerViewModel.swift; sourceTree = "<group>"; };
+		528DC9AF206E593100E56032 /* KMVideoPlayerViewModel+ControlBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KMVideoPlayerViewModel+ControlBar.swift"; sourceTree = "<group>"; };
+		528DC9B1206E635700E56032 /* KMVideoPlayerStateMachine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KMVideoPlayerStateMachine.swift; sourceTree = "<group>"; };
 		52AAAF20204043C3008AAB74 /* KMVideoPlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KMVideoPlayerViewController.swift; sourceTree = "<group>"; };
 		52BF19CD20446E25008ACB1D /* DemoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DemoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		52BF19CF20446E26008ACB1D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -137,6 +141,8 @@
 				523DA67B2040226500C4D64C /* KMVideoPlayer.h */,
 				52AAAF20204043C3008AAB74 /* KMVideoPlayerViewController.swift */,
 				52626314204D479200D29502 /* KMVideoPlayerViewModel.swift */,
+				528DC9AF206E593100E56032 /* KMVideoPlayerViewModel+ControlBar.swift */,
+				528DC9B1206E635700E56032 /* KMVideoPlayerStateMachine.swift */,
 				52FD0DCA20514B0E003C0411 /* KMVideoPlayerControlView.swift */,
 				52F08A582045A9E500430F79 /* KMVideoPlayerControlBar.swift */,
 				52157BA52048021400617FB9 /* KMVideoPlayerPlayPauseButton.swift */,
@@ -338,6 +344,7 @@
 				52FD0DCB20514B0E003C0411 /* KMVideoPlayerControlView.swift in Sources */,
 				52F08A552045980C00430F79 /* AVPlayer+Rx.swift in Sources */,
 				52270A712046FC1800488C79 /* KMVideoPlayerSlider.swift in Sources */,
+				528DC9B0206E593100E56032 /* KMVideoPlayerViewModel+ControlBar.swift in Sources */,
 				52270A6D2046F2B400488C79 /* UISlider+Rx.swift in Sources */,
 				52F08A5C2045B39700430F79 /* CMTime+Additions.swift in Sources */,
 				52FD0DC72051342E003C0411 /* KMVideoPlayerFullscreenButton.swift in Sources */,
@@ -345,6 +352,7 @@
 				52F08A522045717E00430F79 /* AVPlayerItem+Rx.swift in Sources */,
 				52F08A592045A9E500430F79 /* KMVideoPlayerControlBar.swift in Sources */,
 				52270A692046BA9A00488C79 /* KMVideoPlayerViewController+Rx.swift in Sources */,
+				528DC9B2206E635700E56032 /* KMVideoPlayerStateMachine.swift in Sources */,
 				52626315204D479200D29502 /* KMVideoPlayerViewModel.swift in Sources */,
 				52157BA82048074100617FB9 /* KMVideoPlayerPlayPauseButton+Rx.swift in Sources */,
 				52157BA62048021400617FB9 /* KMVideoPlayerPlayPauseButton.swift in Sources */,
