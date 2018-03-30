@@ -117,7 +117,7 @@ open class KMVideoPlayerViewController: UIViewController {
   }
 
   @objc private func showControlsTap() {
-    viewModel.showControlsTrigger.onNext(())
+    viewModel.showHideControlsTrigger.onNext(())
   }
 
   private func bindViewModelInputs() {
@@ -138,7 +138,7 @@ open class KMVideoPlayerViewController: UIViewController {
       .disposed(by: disposeBag)
 
     controlBar.timeSlider.rx.controlEvent(.allTouchEvents)
-      .subscribe(viewModel.showControlsTrigger)
+      .subscribe(viewModel.showHideControlsTrigger)
       .disposed(by: disposeBag)
 
     fullscreenButton.rx.tap
