@@ -73,9 +73,11 @@ extension KMVideoPlayerViewModel {
       case (.playing, .pause):
         player.pause()
         return .paused
-      case (.playing, .startScrubbing),
-           (.paused, .startScrubbing):
-        return .scrubbing(shouldResume: state.isPlaying)
+      case (.playing, .startScrubbing):
+        player.pause()
+        return .scrubbing(shouldResume: true)
+      case (.paused, .startScrubbing):
+        return .scrubbing(shouldResume: false)
       case (.scrubbing, .scrub(let time)):
         player.seek(to: CMTimeMakeWithSeconds(Float64(time), player.currentTime().timescale))
         return state
