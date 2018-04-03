@@ -25,4 +25,13 @@ extension Reactive where Base: KMVideoPlayerViewController {
     return base.player.rx.currentItem
       .flatMapLatest { $0.rx.failedToPlayToEndTime }
   }
+
+  public var fullscreen: Observable<Bool> {
+    return base.viewModel.fullscreen.asObservable()
+  }
+
+  public var controlHideMode: ControlProperty<ControlHideMode> {
+    return ControlProperty(values: base.viewModel.controlHideMode.asObservable(),
+                           valueSink: base.viewModel.controlHideModeTrigger)
+  }
 }

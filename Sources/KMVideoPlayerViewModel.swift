@@ -27,6 +27,8 @@ internal final class KMVideoPlayerViewModel {
 
   let hideControls: Driver<Bool>
 
+  let controlHideMode: Driver<ControlHideMode>
+
   let fullscreen: Driver<Bool>
 
   let playerState: Driver<PlayerState>
@@ -87,6 +89,8 @@ internal final class KMVideoPlayerViewModel {
       }
       .distinctUntilChanged()
       .asDriver(onErrorJustReturn: false)
+
+    self.controlHideMode = controlHideMode.asDriver(onErrorJustReturn: .auto)
 
     self.animateLoadingIndicator = layer.rx.readyForDisplay.map { !$0 }
       .asDriver(onErrorJustReturn: false)
