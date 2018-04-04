@@ -14,7 +14,9 @@ import RxCocoa
 internal final class KMVideoPlayerViewModel {
 
   // MARK: - Inputs
-  let showControlsTrigger: AnyObserver<Void>
+  let showHideControlsTrigger: AnyObserver<Void>
+
+  let controlHideModeTrigger: AnyObserver<ControlHideMode>
 
   let playerActionTrigger: AnyObserver<PlayerAction>
 
@@ -24,6 +26,8 @@ internal final class KMVideoPlayerViewModel {
   let animateLoadingIndicator: Driver<Bool>
 
   let hideControls: Driver<Bool>
+
+  let controlHideMode: Driver<ControlHideMode>
 
   let fullscreen: Driver<Bool>
 
@@ -40,31 +44,53 @@ internal final class KMVideoPlayerViewModel {
       .scan(PlayerState.stopped, accumulator: KMVideoPlayerViewModel.actionProcessor(for: player))
       .share()
 
-    let showControls = PublishSubject<Void>()
-    self.showControlsTrigger = showControls.asObserver()
+    let showHideControls = PublishSubject<Void>()
+    self.showHideControlsTrigger = showHideControls.asObserver()
+
+    let controlHideMode = BehaviorSubject(value: ControlHideMode.auto)
+    self.controlHideModeTrigger = controlHideMode.asObserver()
 
     let fullscreen = PublishSubject<Void>()
     self.fullscreenTrigger = fullscreen.asObserver()
 
-    // hide controls if playing for more than 2 secs and there is no UI interaction
-    let uiTriggers: [Observable<Void>] = [
-      state.map { _ in () },
-      showControls,
-      fullscreen
-    ]
-    self.hideControls = Observable.merge(uiTriggers)
-      .startWith(())
-      .throttle(1.0, scheduler: MainScheduler.instance)
-      .flatMapLatest {
-        return Observable<Bool>.create {
-            $0.onNext(false)
-            return Disposables.create()
-          }
-          .timeout(2.0, scheduler: MainScheduler.instance)
-          .catchError { _ in .just(player.rate > 0.0) }
+    self.hideControls = controlHideMode.flatMapLatest { mode -> Observable<Bool> in
+        switch mode {
+        case .auto:
+          // hide controls if playing for more than 2 secs and there is no UI interaction
+          let triggers: [Observable<Bool>] = [
+            showHideControls.map { true },
+            state.map { _ in false },
+            fullscreen.map { false }
+          ]
+          var isHidden = false
+          return Observable.merge(triggers)
+            .startWith(false)
+            .throttle(1.0, scheduler: MainScheduler.instance)
+            .flatMapLatest { toggle -> Observable<Bool> in
+              if !toggle || (toggle && isHidden) {
+                return Observable<Bool>.create {
+                    $0.onNext(false)
+                    return Disposables.create()
+                  }
+                  .timeout(2.0, scheduler: MainScheduler.instance)
+                  .catchError { _ in .just(player.rate > 0.0) }
+              } else {
+                return Observable.just(true)
+              }
+            }
+            .do(onNext: { isHidden = $0 })
+        case .manual:
+          return showHideControls.scan(false) { hide, _ in
+              return !hide
+            }
+        case .never:
+          return .just(false)
+        }
       }
       .distinctUntilChanged()
       .asDriver(onErrorJustReturn: false)
+
+    self.controlHideMode = controlHideMode.asDriver(onErrorJustReturn: .auto)
 
     self.animateLoadingIndicator = layer.rx.readyForDisplay.map { !$0 }
       .asDriver(onErrorJustReturn: false)

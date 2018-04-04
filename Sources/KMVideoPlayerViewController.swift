@@ -33,8 +33,8 @@ open class KMVideoPlayerViewController: UIViewController {
     layer.videoGravity = .resizeAspect
     return layer
   }()
-  private lazy var viewModel = KMVideoPlayerViewModel(player: self.player,
-                                                      layer: self.playerLayer)
+  internal lazy var viewModel = KMVideoPlayerViewModel(player: self.player,
+                                                       layer: self.playerLayer)
 
   // controls & ui
   private let loadingIndicatorView: UIActivityIndicatorView = {
@@ -117,7 +117,7 @@ open class KMVideoPlayerViewController: UIViewController {
   }
 
   @objc private func showControlsTap() {
-    viewModel.showControlsTrigger.onNext(())
+    viewModel.showHideControlsTrigger.onNext(())
   }
 
   private func bindViewModelInputs() {
@@ -135,10 +135,6 @@ open class KMVideoPlayerViewController: UIViewController {
 
     Observable.merge(playPause, startScrubbing, stopScrubbing, scrub)
       .subscribe(viewModel.playerActionTrigger)
-      .disposed(by: disposeBag)
-
-    controlBar.timeSlider.rx.controlEvent(.allTouchEvents)
-      .subscribe(viewModel.showControlsTrigger)
       .disposed(by: disposeBag)
 
     fullscreenButton.rx.tap
@@ -289,6 +285,22 @@ open class KMVideoPlayerViewController: UIViewController {
   */
   open func set(zone: ControlZone, hidden: Bool) {
     controlView(forZone: zone).isHidden = hidden
+  }
+
+  /**
+   Indicates when controls appear on screen
+   */
+  open var controlHideMode: ControlHideMode {
+    get {
+      var controlHideMode = ControlHideMode.auto
+      viewModel.controlHideMode
+        .drive(onNext: { controlHideMode = $0 })
+        .dispose()
+      return controlHideMode
+    }
+    set {
+      viewModel.controlHideModeTrigger.onNext(newValue)
+    }
   }
 
 }
