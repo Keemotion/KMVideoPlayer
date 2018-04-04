@@ -137,10 +137,6 @@ open class KMVideoPlayerViewController: UIViewController {
       .subscribe(viewModel.playerActionTrigger)
       .disposed(by: disposeBag)
 
-    controlBar.timeSlider.rx.controlEvent(.allTouchEvents)
-      .subscribe(viewModel.showHideControlsTrigger)
-      .disposed(by: disposeBag)
-
     fullscreenButton.rx.tap
       .subscribe(viewModel.fullscreenTrigger)
       .disposed(by: disposeBag)

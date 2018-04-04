@@ -67,7 +67,7 @@ internal final class KMVideoPlayerViewModel {
             .startWith(false)
             .throttle(1.0, scheduler: MainScheduler.instance)
             .flatMapLatest { toggle -> Observable<Bool> in
-              if !toggle || isHidden {
+              if !toggle || (toggle && isHidden) {
                 return Observable<Bool>.create {
                     $0.onNext(false)
                     return Disposables.create()
