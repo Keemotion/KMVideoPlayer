@@ -26,12 +26,12 @@ extension Reactive where Base: AVPlayer {
   public var currentTime: Observable<CMTime> {
     return Observable.create { observer in
       let interval = CMTime(seconds: 0.02, preferredTimescale: 100)
-      let o = self.base.addPeriodicTimeObserver(forInterval: interval, queue: nil) {
+      let timeObserver = self.base.addPeriodicTimeObserver(forInterval: interval, queue: nil) {
         observer.onNext($0)
       }
 
       return Disposables.create {
-        self.base.removeTimeObserver(o)
+        self.base.removeTimeObserver(timeObserver)
       }
     }
   }
