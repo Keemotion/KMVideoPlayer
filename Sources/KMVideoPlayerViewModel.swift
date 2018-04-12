@@ -39,7 +39,12 @@ internal final class KMVideoPlayerViewModel {
     let playerAction = PublishSubject<PlayerAction>()
     self.playerActionTrigger = playerAction.asObserver()
 
-    let state = playerAction.distinctUntilChanged()
+    let itemFinished = player.rx.currentItem
+      .flatMapLatest { $0.rx.didPlayToEndTime }
+      .map { _ in PlayerAction.pause }
+
+    let state = Observable.merge(playerAction, itemFinished)
+      .distinctUntilChanged()
       .startWith(.stop)
       .scan(PlayerState.stopped, accumulator: KMVideoPlayerViewModel.actionProcessor(for: player))
       .share()

@@ -68,6 +68,11 @@ extension KMVideoPlayerViewModel {
         player.insert(item, after: nil)
         return .paused
       case (.paused, .play):
+        if let currentItem = player.currentItem,
+          currentItem.duration.value > 0,
+          CMTimeCompare(player.currentTime(), currentItem.duration) >= 0 {
+            player.seek(to: kCMTimeZero)
+        }
         player.play()
         return .playing
       case (.playing, .pause):
