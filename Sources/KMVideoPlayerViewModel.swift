@@ -80,8 +80,9 @@ internal final class KMVideoPlayerViewModel {
             }
             .do(onNext: { isHidden = $0 })
         case .manual:
-          return showHideControls.scan(false) { hide, _ in
-              return !hide
+          return showHideControls.withLatestFrom(state)
+            .scan(false) { hide, state in
+              return state.isScrubbing ? false : !hide
             }
         case .never:
           return .just(false)
