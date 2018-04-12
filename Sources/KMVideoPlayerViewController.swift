@@ -128,7 +128,7 @@ open class KMVideoPlayerViewController: UIViewController {
     let slider = controlBar.timeSlider
     let startScrubbing = slider.rx.controlEvent(.touchDown)
       .map { PlayerAction.startScrubbing }
-    let stopScrubbing = slider.rx.controlEvent([.touchUpInside, .touchUpOutside])
+    let stopScrubbing = slider.rx.controlEvent([.touchUpInside, .touchUpOutside, .touchCancel])
       .map { PlayerAction.stopScrubbing }
     let scrub = slider.rx.controlEvent(.valueChanged)
       .map { PlayerAction.scrub(time: slider.value) }
