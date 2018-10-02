@@ -123,7 +123,7 @@ open class KMVideoPlayerViewController: UIViewController {
   private func bindViewModelInputs() {
     let playPause = controlBar.playPauseButton.rx.tap
       .withLatestFrom(viewModel.playerState.map { $0.isPlaying }.asObservable())
-      .map { $0 ? PlayerAction.pause : PlayerAction.play }
+      .map { $0 ? PlayerAction.pause : PlayerAction.play(rate: 1.0) }
 
     let slider = controlBar.timeSlider
     let startScrubbing = slider.rx.controlEvent(.touchDown)
@@ -131,7 +131,7 @@ open class KMVideoPlayerViewController: UIViewController {
     let stopScrubbing = slider.rx.controlEvent([.touchUpInside, .touchUpOutside, .touchCancel])
       .map { PlayerAction.stopScrubbing }
     let scrub = slider.rx.controlEvent(.valueChanged)
-      .map { PlayerAction.scrub(time: slider.value) }
+      .map { PlayerAction.scrub(time: Double(slider.value)) }
 
     Observable.merge(playPause, startScrubbing, stopScrubbing, scrub)
       .subscribe(viewModel.playerActionTrigger)
@@ -213,7 +213,7 @@ open class KMVideoPlayerViewController: UIViewController {
 
     viewModel.playerActionTrigger.onNext(.queue(item: playerItem))
     if startImmediately {
-      viewModel.playerActionTrigger.onNext(.play)
+      viewModel.playerActionTrigger.onNext(.play(rate: 1.0))
     }
 
     return true
@@ -231,6 +231,31 @@ open class KMVideoPlayerViewController: UIViewController {
    */
   open func stop() {
     viewModel.playerActionTrigger.onNext(.stop)
+  }
+
+  /**
+   The playback rate
+   */
+  open var playbackRate: Float {
+    get {
+      return player.rate
+    }
+    set {
+      viewModel.playerActionTrigger.onNext(.play(rate: newValue))
+    }
+  }
+
+  /**
+   Seeks by adding the passed seconds to the current time
+   */
+  open func seek(byAdding time: Double) {
+    let currentTime = player.currentTime()
+
+    guard currentTime.isValid else { return }
+
+    viewModel.playerActionTrigger.onNext(.startScrubbing)
+    viewModel.playerActionTrigger.onNext(.scrub(time: currentTime.seconds + time))
+    viewModel.playerActionTrigger.onNext(.stopScrubbing)
   }
 
   /**
