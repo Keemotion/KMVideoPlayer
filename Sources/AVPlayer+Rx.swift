@@ -13,7 +13,7 @@ import RxSwift
 import RxCocoa
 
 extension Reactive where Base: AVPlayer {
-  public var currentItem: Observable<AVPlayerItem> {
+  var currentItem: Observable<AVPlayerItem> {
     return self.observe(AVPlayerItem.self, #keyPath(AVPlayer.currentItem))
       .flatMap { item -> Observable<AVPlayerItem> in
         guard let item = item else {
@@ -23,7 +23,7 @@ extension Reactive where Base: AVPlayer {
       }
   }
 
-  public var currentTime: Observable<CMTime> {
+  var currentTime: Observable<CMTime> {
     return Observable.create { observer in
       let interval = CMTime(seconds: 0.02, preferredTimescale: 100)
       let timeObserver = self.base.addPeriodicTimeObserver(forInterval: interval, queue: nil) {
@@ -36,7 +36,7 @@ extension Reactive where Base: AVPlayer {
     }
   }
 
-  public var rate: Observable<Float> {
+  var rate: Observable<Float> {
     return self.observe(Float.self, #keyPath(AVPlayer.rate))
       .map { $0 ?? 0 }
   }

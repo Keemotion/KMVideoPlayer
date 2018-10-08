@@ -13,7 +13,7 @@ import RxSwift
 import RxCocoa
 
 extension Reactive where Base: AVPlayerLayer {
-  public var readyForDisplay: Observable<Bool> {
+  var readyForDisplay: Observable<Bool> {
     return self.observe(Bool.self, #keyPath(AVPlayerLayer.isReadyForDisplay))
       .map { $0 ?? false }
   }
