@@ -11,12 +11,17 @@ import CoreMedia
 
 extension CMTime {
   var timeString: String {
-    if self.isNumeric {
-      let seconds = Int(self.seconds.truncatingRemainder(dividingBy: 60).rounded(.down))
-      let minutes = Int((self.seconds / 60.0).rounded(.down))
+    guard self.isNumeric else {
+      return "0:00"
+    }
+
+    let seconds = Int(self.seconds.truncatingRemainder(dividingBy: 60).rounded(.down))
+    let minutes = Int((self.seconds / 60.0).rounded(.down))
+    if minutes < 60 {
       return String(format: "%i:%02i", minutes, seconds)
     } else {
-      return "0:00"
+      let hours = minutes / 60
+      return String(format: "%i:%02i:%02i", hours, minutes % 60, seconds)
     }
   }
 }
