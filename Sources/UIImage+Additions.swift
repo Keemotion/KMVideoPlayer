@@ -83,8 +83,8 @@ extension UIImage {
     layer.fillColor = UIColor(white: 0.8, alpha: 1.0).cgColor
     layer.strokeColor = layer.fillColor
     layer.lineWidth = 2.0
-    layer.lineCap = kCALineCapRound
-    layer.lineJoin = kCALineJoinRound
+    layer.lineCap = CAShapeLayerLineCap.round
+    layer.lineJoin = CAShapeLayerLineJoin.round
 
     let path = UIBezierPath()
     path.move(to: CGPoint(x: 14, y: 1))
@@ -115,8 +115,8 @@ extension UIImage {
     layer.fillColor = UIColor(white: 0.8, alpha: 1.0).cgColor
     layer.strokeColor = layer.fillColor
     layer.lineWidth = 2.0
-    layer.lineCap = kCALineCapRound
-    layer.lineJoin = kCALineJoinRound
+    layer.lineCap = CAShapeLayerLineCap.round
+    layer.lineJoin = CAShapeLayerLineJoin.round
 
     let path = UIBezierPath()
     path.move(to: CGPoint(x: 9, y: 6))

@@ -72,7 +72,7 @@ extension KMVideoPlayerViewModel {
         if let currentItem = player.currentItem,
           currentItem.duration.value > 0,
           CMTimeCompare(player.currentTime(), currentItem.duration) >= 0 {
-            player.seek(to: kCMTimeZero)
+            player.seek(to: .zero)
         }
         player.rate = rate
         return .playing
@@ -89,7 +89,7 @@ extension KMVideoPlayerViewModel {
       case (.paused, .startScrubbing):
         return .scrubbing(resumeWithRate: 0.0)
       case (.scrubbing, .scrub(let time)):
-        player.seek(to: CMTimeMakeWithSeconds(time, player.currentTime().timescale))
+        player.seek(to: CMTimeMakeWithSeconds(time, preferredTimescale: player.currentTime().timescale))
         return state
       case (.scrubbing(let rate), .stopScrubbing):
         if rate > 0.0 {
