@@ -11,7 +11,7 @@ import UIKit
 
 internal class KMVideoPlayerControlView: UIView {
 
-  typealias Axis = UILayoutConstraintAxis
+  typealias Axis = NSLayoutConstraint.Axis
 
   // Spacing used between UI elements accross the player
   static let spacing: CGFloat = 8.0

@@ -38,7 +38,7 @@ open class KMVideoPlayerViewController: UIViewController {
 
   // controls & ui
   private let loadingIndicatorView: UIActivityIndicatorView = {
-    let activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .whiteLarge)
+    let activityIndicator = UIActivityIndicatorView(style: .whiteLarge)
     activityIndicator.hidesWhenStopped = true
     return activityIndicator
   }()
@@ -173,9 +173,9 @@ open class KMVideoPlayerViewController: UIViewController {
           self.fullscreenWindow.makeKeyAndVisible()
         } else {
           self.fullscreenWindow.rootViewController = nil
-          self.willMove(toParentViewController: nil)
+          self.willMove(toParent: nil)
           self.view.removeFromSuperview()
-          self.removeFromParentViewController()
+          self.removeFromParent()
           if let previousSuperview = self.previousSuperview {
             self.view.frame = previousSuperview.bounds
             previousSuperview.addSubview(self.view)
