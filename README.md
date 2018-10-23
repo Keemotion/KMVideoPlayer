@@ -15,9 +15,9 @@ The implementation relies heavily on `RxSwift` internally and the goal is eventu
 
 ## Requirements
 - iOS 9 +
-- Xcode 9
-- Swift 4
-- RxSwift 4.1.2
+- Xcode 10
+- Swift 4.2
+- RxSwift 4.3.1
 
 ### [Carthage](https://github.com/Carthage/Carthage)
 Add `KMVideoPlayer` to your Cartfile.
