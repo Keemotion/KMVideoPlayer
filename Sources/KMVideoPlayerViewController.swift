@@ -259,6 +259,17 @@ open class KMVideoPlayerViewController: UIViewController {
   }
 
   /**
+   Seeks to the time passed in seconds
+   */
+  open func seek(to time: Double) {
+    guard time >= 0 else { return }
+
+    viewModel.playerActionTrigger.onNext(.startScrubbing)
+    viewModel.playerActionTrigger.onNext(.scrub(time: time))
+    viewModel.playerActionTrigger.onNext(.stopScrubbing)
+  }
+
+  /**
    Indicates if the player is in fullscreen mode
    Changing the value causes the player to enter or leave fullscreen mode
    */
