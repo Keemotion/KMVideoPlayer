@@ -111,13 +111,9 @@ open class KMVideoPlayerViewController: UIViewController {
   }
 
   private func setupTapGesture() {
-    let tapGesture = UITapGestureRecognizer(target: self, action: #selector(showControlsTap))
+    let tapGesture = UITapGestureRecognizer(target: self, action: #selector(showHideControls))
     view.isUserInteractionEnabled = true
     view.addGestureRecognizer(tapGesture)
-  }
-
-  @objc private func showControlsTap() {
-    viewModel.showHideControlsTrigger.onNext(())
   }
 
   private func bindViewModelInputs() {
@@ -326,6 +322,13 @@ open class KMVideoPlayerViewController: UIViewController {
     set {
       viewModel.controlHideModeTrigger.onNext(newValue)
     }
+  }
+
+  /**
+   Show/Hide controls on screen
+   */
+  @objc open func showHideControls() {
+    viewModel.showHideControlsTrigger.onNext(())
   }
 
 }
