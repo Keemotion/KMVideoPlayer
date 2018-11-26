@@ -25,6 +25,8 @@ internal final class KMVideoPlayerViewModel {
   // MARK: - Outputs
   let animateLoadingIndicator: Driver<Bool>
 
+  let hideAirplayMessage: Driver<Bool>
+
   let hideControls: Driver<Bool>
 
   let controlHideMode: Driver<ControlHideMode>
@@ -98,7 +100,18 @@ internal final class KMVideoPlayerViewModel {
 
     self.controlHideMode = controlHideMode.asDriver(onErrorJustReturn: .auto)
 
-    self.animateLoadingIndicator = layer.rx.readyForDisplay.map { !$0 }
+    self.animateLoadingIndicator = player.rx.isExternalPlaybackActive
+      .flatMapLatest { isExternal -> Observable<Bool> in
+        if isExternal {
+          return Observable.just(false)
+        } else {
+          return layer.rx.readyForDisplay.map { !$0 }
+        }
+      }
+      .asDriver(onErrorJustReturn: false)
+
+    self.hideAirplayMessage = player.rx.isExternalPlaybackActive
+      .map { !$0 }
       .asDriver(onErrorJustReturn: false)
 
     self.fullscreen = fullscreen.scan(false) { previous, _ in

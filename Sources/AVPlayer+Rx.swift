@@ -43,4 +43,9 @@ extension Reactive where Base: AVPlayer {
     return self.observe(Float.self, #keyPath(AVPlayer.rate))
       .map { $0 ?? 0 }
   }
+
+  var isExternalPlaybackActive: Observable<Bool> {
+    return self.observe(Bool.self, #keyPath(AVPlayer.isExternalPlaybackActive))
+      .map { $0 ?? false }
+  }
 }

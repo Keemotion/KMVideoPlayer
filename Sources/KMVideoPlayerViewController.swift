@@ -42,6 +42,12 @@ open class KMVideoPlayerViewController: UIViewController {
     activityIndicator.hidesWhenStopped = true
     return activityIndicator
   }()
+  private let airplayTextLabel: UILabel = {
+    let label = UILabel(frame: .zero)
+    label.text = "Video is showing on an external screen"
+    label.textColor = UIColor.white
+    return label
+  }()
   private let controlContainerView = UIView()
   private let controlBar = KMVideoPlayerControlBar()
   private let topLeftControlView = KMVideoPlayerControlView(axis: .horizontal)
@@ -90,7 +96,11 @@ open class KMVideoPlayerViewController: UIViewController {
     controlContainerView.addSubview(rightControlView)
 
     topLeftControlView.pin(to: [.top, .left], margin: KMVideoPlayerControlView.spacing)
-    topLeftControlView.stackView.addArrangedSubview(fullscreenButton)
+    if allowFullscreen {
+      topLeftControlView.stackView.addArrangedSubview(fullscreenButton)
+    } else {
+      topLeftControlView.isHidden = true
+    }
     topRightControlView.pin(to: [.top, .right], margin: KMVideoPlayerControlView.spacing)
     topRightControlView.isHidden = true
     leftControlView.pin(to: .left, margin: KMVideoPlayerControlView.spacing)
@@ -106,8 +116,11 @@ open class KMVideoPlayerViewController: UIViewController {
     controlBar.pin(to: .bottom, margin: KMVideoPlayerControlView.spacing)
 
     view.addSubview(loadingIndicatorView)
-
     loadingIndicatorView.center()
+
+    view.addSubview(airplayTextLabel)
+    airplayTextLabel.sizeToFit()
+    airplayTextLabel.center()
   }
 
   private func setupTapGesture() {
@@ -140,6 +153,9 @@ open class KMVideoPlayerViewController: UIViewController {
 
   private func bindViewModelOutputs() {
     viewModel.animateLoadingIndicator.drive(loadingIndicatorView.rx.isAnimating)
+      .disposed(by: disposeBag)
+
+    viewModel.hideAirplayMessage.drive(airplayTextLabel.rx.isHidden)
       .disposed(by: disposeBag)
 
     viewModel.hideControls.drive(onNext: { [unowned self] shouldHide in
@@ -282,6 +298,38 @@ open class KMVideoPlayerViewController: UIViewController {
       if newValue != fullscreen {
         viewModel.fullscreenTrigger.onNext(())
       }
+    }
+  }
+
+  /**
+   Indicates if the user should be able to enter manually fullscreen mode
+   */
+  open var allowFullscreen = true {
+    didSet {
+      if allowFullscreen != oldValue {
+        if allowFullscreen {
+          topLeftControlView.stackView.addArrangedSubview(fullscreenButton)
+          topLeftControlView.isHidden = false
+        } else {
+          topLeftControlView.stackView.removeArrangedSubview(fullscreenButton)
+          fullscreenButton.removeFromSuperview()
+          if topLeftControlView.stackView.subviews.isEmpty {
+            topLeftControlView.isHidden = true
+          }
+        }
+      }
+    }
+  }
+
+  /**
+   See AVPlayer.usesExternalPlaybackWhileExternalScreenIsActive
+   */
+  open var automaticallyUseExternalPlayback: Bool {
+    get {
+      return player.usesExternalPlaybackWhileExternalScreenIsActive
+    }
+    set {
+      player.usesExternalPlaybackWhileExternalScreenIsActive = newValue
     }
   }
 

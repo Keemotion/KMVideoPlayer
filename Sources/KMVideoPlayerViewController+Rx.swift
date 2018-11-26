@@ -48,6 +48,10 @@ extension Reactive where Base: KMVideoPlayerViewController {
     return base.viewModel.fullscreen.asObservable()
   }
 
+  public var isExternalPlaybackActive: Observable<Bool> {
+    return base.player.rx.isExternalPlaybackActive
+  }
+
   public var controlHideMode: ControlProperty<ControlHideMode> {
     return ControlProperty(values: base.viewModel.controlHideMode.asObservable(),
                            valueSink: base.viewModel.controlHideModeTrigger)

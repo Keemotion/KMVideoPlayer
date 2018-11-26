@@ -3,5 +3,8 @@ included:
 function_body_length:
   - 80 # warning
   - 100 # error
+type_body_length:
+  - 300 # warning
+  - 400 # error
 cyclomatic_complexity:
   - 12
