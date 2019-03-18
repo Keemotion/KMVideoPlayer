@@ -19,6 +19,7 @@ internal class KMVideoPlayerSlider: UISlider {
 
   override func trackRect(forBounds bounds: CGRect) -> CGRect {
     var bounds = super.trackRect(forBounds: bounds)
+    bounds.origin.y -= (5.0 - bounds.size.height) / 2.0
     bounds.size.height = 5.0
     return bounds
   }
