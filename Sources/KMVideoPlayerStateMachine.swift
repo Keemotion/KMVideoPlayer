@@ -43,7 +43,7 @@ extension KMVideoPlayerViewModel {
     case playing
     case paused
     case stopped
-    case scrubbing(resumeWithRate: Float)
+    case scrubbing(resumeWithRate: Float, time: CMTime)
 
     var isPlaying: Bool {
       if case .playing = self {
@@ -85,13 +85,14 @@ extension KMVideoPlayerViewModel {
       case (.playing, .startScrubbing):
         let rate = player.rate
         player.pause()
-        return .scrubbing(resumeWithRate: rate)
+        return .scrubbing(resumeWithRate: rate, time: player.currentTime())
       case (.paused, .startScrubbing):
-        return .scrubbing(resumeWithRate: 0.0)
-      case (.scrubbing, .scrub(let time)):
-        player.seek(to: CMTimeMakeWithSeconds(time, preferredTimescale: player.currentTime().timescale))
-        return state
-      case (.scrubbing(let rate), .stopScrubbing):
+        return .scrubbing(resumeWithRate: 0.0, time: player.currentTime())
+      case (.scrubbing(let rate, _), .scrub(let time)):
+        let time = CMTimeMakeWithSeconds(time, preferredTimescale: player.currentTime().timescale)
+        player.seek(to: time)
+        return .scrubbing(resumeWithRate: rate, time: time)
+      case (.scrubbing(let rate, _), .stopScrubbing):
         if rate > 0.0 {
           player.rate = rate
           return .playing

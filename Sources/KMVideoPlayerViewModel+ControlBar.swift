@@ -20,16 +20,23 @@ extension KMVideoPlayerViewModel {
     let maximumValue: Driver<Float>
     let duration: Driver<String>
 
-    init(player: AVPlayer, isScrubbing: Observable<Bool>) {
+    init(player: AVPlayer, state: Observable<PlayerState>) {
       self.isPlaying = player.rx.rate.map { $0 > 0 }
         .asDriver(onErrorJustReturn: false)
 
-      self.currentTime = player.rx.currentTime
+      let scrubTime = state.flatMap { state -> Observable<CMTime> in
+        if case .scrubbing(_, let time) = state {
+          return .just(time)
+        } else {
+          return .empty()
+        }
+      }
+      self.currentTime = Observable.merge(player.rx.currentTime, scrubTime)
         .map { $0.timeString }
         .asDriver(onErrorJustReturn: "0:00")
 
       self.currentProgress = player.rx.currentTime
-        .withLatestFrom(isScrubbing) { ($0, $1) }
+        .withLatestFrom(state.map { $0.isScrubbing }) { ($0, $1) }
         .flatMap { (time, scrubbing) -> Observable<Float> in
           if scrubbing {
             return .empty()
