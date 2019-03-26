@@ -121,7 +121,7 @@ internal final class KMVideoPlayerViewModel {
 
     self.playerState = state.asDriver(onErrorJustReturn: .stopped)
 
-    self.controlBarOutputs = ControlBarOutputs(player: player, isScrubbing: state.map { $0.isScrubbing })
+    self.controlBarOutputs = ControlBarOutputs(player: player, state: state)
   }
 
 }
