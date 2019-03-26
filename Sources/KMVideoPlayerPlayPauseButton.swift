@@ -8,13 +8,21 @@
 
 import Foundation
 
-internal class KMVideoPlayerPlayPauseButton: UIButton {
-  private let playImage = UIImage.playImage()
-  private let pauseImage = UIImage.pauseImage()
-
-  public var isPlaying = false {
+open class KMVideoPlayerPlayPauseButton: UIButton {
+  open var playImage = UIImage.playImage() {
     didSet {
-      setImage(isPlaying ? pauseImage : playImage, for: .normal)
+      updateImage()
+    }
+  }
+  open var pauseImage = UIImage.pauseImage() {
+    didSet {
+      updateImage()
+    }
+  }
+
+  internal var isPlaying = false {
+    didSet {
+      updateImage()
     }
   }
 
@@ -24,8 +32,12 @@ internal class KMVideoPlayerPlayPauseButton: UIButton {
     self.contentHorizontalAlignment = .center
   }
 
-  override var intrinsicContentSize: CGSize {
+  override open var intrinsicContentSize: CGSize {
     return CGSize(width: 44, height: super.intrinsicContentSize.height)
+  }
+
+  func updateImage() {
+    setImage(isPlaying ? pauseImage : playImage, for: .normal)
   }
 
 }

@@ -206,6 +206,15 @@ open class KMVideoPlayerViewController: UIViewController {
   }
 
   /**
+   Play/Pause button from the control bar
+
+   Access this button to move it to another control zone only
+   */
+  open var playPauseButton: KMVideoPlayerPlayPauseButton {
+    return controlBar.playPauseButton
+  }
+
+  /**
    Queues the video file present at the specified URL and starts playing
 
    - parameters:
