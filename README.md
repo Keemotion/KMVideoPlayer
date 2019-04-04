@@ -14,10 +14,10 @@ The implementation relies heavily on `RxSwift` internally and the goal is eventu
 - [ ] Functional Rx API
 
 ## Requirements
-- iOS 9 +
-- Xcode 10
-- Swift 4.2
-- RxSwift 4.3.1
+- iOS 9.3 +
+- Xcode 10.2
+- Swift 5
+- RxSwift 4.5.0
 
 ### [Carthage](https://github.com/Carthage/Carthage)
 Add `KMVideoPlayer` to your Cartfile.
