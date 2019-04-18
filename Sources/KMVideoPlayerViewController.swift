@@ -11,7 +11,7 @@ import AVFoundation
 import RxSwift
 import RxCocoa
 
-open class KMVideoPlayerViewController: UIViewController {
+@objc open class KMVideoPlayerViewController: UIViewController {
 
   typealias PlayerAction = KMVideoPlayerViewModel.PlayerAction
 
