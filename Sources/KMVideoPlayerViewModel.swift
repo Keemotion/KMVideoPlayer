@@ -72,14 +72,14 @@ internal final class KMVideoPlayerViewModel {
           var isHidden = false
           return Observable.merge(triggers)
             .startWith(false)
-            .throttle(1.0, scheduler: MainScheduler.instance)
+            .throttle(.seconds(1), scheduler: MainScheduler.instance)
             .flatMapLatest { toggle -> Observable<Bool> in
               if !toggle || (toggle && isHidden) {
                 return Observable<Bool>.create {
                     $0.onNext(false)
                     return Disposables.create()
                   }
-                  .timeout(2.0, scheduler: MainScheduler.instance)
+                  .timeout(.seconds(2), scheduler: MainScheduler.instance)
                   .catchError { _ in .just(player.rate > 0.0) }
               } else {
                 return Observable.just(true)
