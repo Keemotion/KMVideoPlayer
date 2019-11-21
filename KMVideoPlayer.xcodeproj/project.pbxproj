@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		520F3FB32385534F0012A0D6 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5241C69520405F8200BCA5FE /* RxSwift.framework */; };
+		520F3FB4238553510012A0D6 /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5241C69420405F8200BCA5FE /* RxCocoa.framework */; };
+		520F3FB6238553A00012A0D6 /* RxRelay.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 520F3FB5238553A00012A0D6 /* RxRelay.framework */; };
+		520F3FB7238553A70012A0D6 /* RxRelay.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 520F3FB5238553A00012A0D6 /* RxRelay.framework */; };
 		52157BA62048021400617FB9 /* KMVideoPlayerPlayPauseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52157BA52048021400617FB9 /* KMVideoPlayerPlayPauseButton.swift */; };
 		52157BA82048074100617FB9 /* KMVideoPlayerPlayPauseButton+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52157BA72048074100617FB9 /* KMVideoPlayerPlayPauseButton+Rx.swift */; };
 		52270A692046BA9A00488C79 /* KMVideoPlayerViewController+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52270A682046BA9A00488C79 /* KMVideoPlayerViewController+Rx.swift */; };
@@ -63,6 +67,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		520F3FB5238553A00012A0D6 /* RxRelay.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxRelay.framework; path = Carthage/Build/iOS/RxRelay.framework; sourceTree = "<group>"; };
 		52157BA52048021400617FB9 /* KMVideoPlayerPlayPauseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KMVideoPlayerPlayPauseButton.swift; sourceTree = "<group>"; };
 		52157BA72048074100617FB9 /* KMVideoPlayerPlayPauseButton+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KMVideoPlayerPlayPauseButton+Rx.swift"; sourceTree = "<group>"; };
 		52270A682046BA9A00488C79 /* KMVideoPlayerViewController+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KMVideoPlayerViewController+Rx.swift"; sourceTree = "<group>"; };
@@ -104,6 +109,7 @@
 			files = (
 				5241C69620405F8200BCA5FE /* RxCocoa.framework in Frameworks */,
 				5241C69720405F8200BCA5FE /* RxSwift.framework in Frameworks */,
+				520F3FB7238553A70012A0D6 /* RxRelay.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -111,7 +117,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				520F3FB6238553A00012A0D6 /* RxRelay.framework in Frameworks */,
 				52BF19E120446ED6008ACB1D /* KMVideoPlayer.framework in Frameworks */,
+				520F3FB32385534F0012A0D6 /* RxSwift.framework in Frameworks */,
+				520F3FB4238553510012A0D6 /* RxCocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -155,6 +164,7 @@
 			children = (
 				5241C69420405F8200BCA5FE /* RxCocoa.framework */,
 				5241C69520405F8200BCA5FE /* RxSwift.framework */,
+				520F3FB5238553A00012A0D6 /* RxRelay.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -350,15 +360,17 @@
 			inputPaths = (
 				"$(SRCROOT)/Carthage/Build/iOS/RxSwift.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/RxCocoa.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/RxRelay.framework",
 			);
 			name = "Copy Carthage Frameworks";
 			outputPaths = (
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/RxSwift.framework",
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/RxCocoa.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/RxRelay.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "/usr/local/bin/carthage copy-frameworks";
+			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -597,6 +609,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = DemoApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.keemotion.DemoApp;
@@ -610,6 +626,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = DemoApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.keemotion.DemoApp;

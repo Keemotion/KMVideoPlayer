@@ -8,6 +8,7 @@
 
 import Foundation
 import CoreMedia
+import RxCocoa
 
 extension CMTime {
   var timeString: String {
@@ -22,6 +23,20 @@ extension CMTime {
     } else {
       let hours = minutes / 60
       return String(format: "%i:%02i:%02i", hours, minutes % 60, seconds)
+    }
+  }
+}
+
+extension CMTime: KVORepresentable {
+  public typealias KVOType = NSValue
+
+  public init?(KVOValue: KVOType) {
+    var typedValue = CMTime(value: 0, timescale: 1)
+    KVOValue.getValue(&typedValue)
+    if typedValue.isValid && !typedValue.isIndefinite {
+      self = typedValue
+    } else {
+      return nil
     }
   }
 }
