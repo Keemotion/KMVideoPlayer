@@ -15,8 +15,8 @@ The implementation relies heavily on `RxSwift` internally and the goal is eventu
 
 ## Requirements
 - iOS 9.3 +
-- Xcode 11.4
-- Swift 5.2
+- Xcode 12.3
+- Swift 5.3
 - RxSwift 5.1.1
 
 ### [Carthage](https://github.com/Carthage/Carthage)
