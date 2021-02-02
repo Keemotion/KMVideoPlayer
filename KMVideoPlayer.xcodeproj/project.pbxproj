@@ -3,22 +3,16 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 48;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		520F3FB32385534F0012A0D6 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5241C69520405F8200BCA5FE /* RxSwift.framework */; };
-		520F3FB4238553510012A0D6 /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5241C69420405F8200BCA5FE /* RxCocoa.framework */; };
-		520F3FB6238553A00012A0D6 /* RxRelay.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 520F3FB5238553A00012A0D6 /* RxRelay.framework */; };
-		520F3FB7238553A70012A0D6 /* RxRelay.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 520F3FB5238553A00012A0D6 /* RxRelay.framework */; };
 		52157BA62048021400617FB9 /* KMVideoPlayerPlayPauseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52157BA52048021400617FB9 /* KMVideoPlayerPlayPauseButton.swift */; };
 		52157BA82048074100617FB9 /* KMVideoPlayerPlayPauseButton+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52157BA72048074100617FB9 /* KMVideoPlayerPlayPauseButton+Rx.swift */; };
 		52270A692046BA9A00488C79 /* KMVideoPlayerViewController+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52270A682046BA9A00488C79 /* KMVideoPlayerViewController+Rx.swift */; };
 		52270A6D2046F2B400488C79 /* UISlider+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52270A6C2046F2B400488C79 /* UISlider+Rx.swift */; };
 		52270A712046FC1800488C79 /* KMVideoPlayerSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52270A702046FC1800488C79 /* KMVideoPlayerSlider.swift */; };
 		523DA67D2040226500C4D64C /* KMVideoPlayer.h in Headers */ = {isa = PBXBuildFile; fileRef = 523DA67B2040226500C4D64C /* KMVideoPlayer.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		5241C69620405F8200BCA5FE /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5241C69420405F8200BCA5FE /* RxCocoa.framework */; };
-		5241C69720405F8200BCA5FE /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5241C69520405F8200BCA5FE /* RxSwift.framework */; };
 		52626315204D479200D29502 /* KMVideoPlayerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52626314204D479200D29502 /* KMVideoPlayerViewModel.swift */; };
 		526A374C20736C4300754AA9 /* KMVideoPlayerControlHideMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 526A374B20736C4300754AA9 /* KMVideoPlayerControlHideMode.swift */; };
 		526A375E2073A4E400754AA9 /* CMTime+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 526A375B2073A4E400754AA9 /* CMTime+Additions.swift */; };
@@ -27,6 +21,12 @@
 		528DC9B0206E593100E56032 /* KMVideoPlayerViewModel+ControlBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 528DC9AF206E593100E56032 /* KMVideoPlayerViewModel+ControlBar.swift */; };
 		528DC9B2206E635700E56032 /* KMVideoPlayerStateMachine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 528DC9B1206E635700E56032 /* KMVideoPlayerStateMachine.swift */; };
 		52AAAF21204043C3008AAB74 /* KMVideoPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AAAF20204043C3008AAB74 /* KMVideoPlayerViewController.swift */; };
+		52B5995025C998F700B79D12 /* RxRelay.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52B5994D25C998F700B79D12 /* RxRelay.xcframework */; };
+		52B5995125C998F700B79D12 /* RxRelay.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52B5994D25C998F700B79D12 /* RxRelay.xcframework */; };
+		52B5995225C998F700B79D12 /* RxSwift.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52B5994E25C998F700B79D12 /* RxSwift.xcframework */; };
+		52B5995325C998F700B79D12 /* RxSwift.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52B5994E25C998F700B79D12 /* RxSwift.xcframework */; };
+		52B5995425C998F700B79D12 /* RxCocoa.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52B5994F25C998F700B79D12 /* RxCocoa.xcframework */; };
+		52B5995525C998F700B79D12 /* RxCocoa.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52B5994F25C998F700B79D12 /* RxCocoa.xcframework */; };
 		52BF19D020446E26008ACB1D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52BF19CF20446E26008ACB1D /* AppDelegate.swift */; };
 		52BF19D220446E26008ACB1D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52BF19D120446E26008ACB1D /* ViewController.swift */; };
 		52BF19D520446E26008ACB1D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 52BF19D320446E26008ACB1D /* Main.storyboard */; };
@@ -67,7 +67,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		520F3FB5238553A00012A0D6 /* RxRelay.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxRelay.framework; path = Carthage/Build/iOS/RxRelay.framework; sourceTree = "<group>"; };
 		52157BA52048021400617FB9 /* KMVideoPlayerPlayPauseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KMVideoPlayerPlayPauseButton.swift; sourceTree = "<group>"; };
 		52157BA72048074100617FB9 /* KMVideoPlayerPlayPauseButton+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KMVideoPlayerPlayPauseButton+Rx.swift"; sourceTree = "<group>"; };
 		52270A682046BA9A00488C79 /* KMVideoPlayerViewController+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KMVideoPlayerViewController+Rx.swift"; sourceTree = "<group>"; };
@@ -76,8 +75,6 @@
 		523DA6782040226500C4D64C /* KMVideoPlayer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = KMVideoPlayer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		523DA67B2040226500C4D64C /* KMVideoPlayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KMVideoPlayer.h; sourceTree = "<group>"; };
 		523DA67C2040226500C4D64C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		5241C69420405F8200BCA5FE /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCocoa.framework; path = Carthage/Build/iOS/RxCocoa.framework; sourceTree = "<group>"; };
-		5241C69520405F8200BCA5FE /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/iOS/RxSwift.framework; sourceTree = "<group>"; };
 		52626314204D479200D29502 /* KMVideoPlayerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KMVideoPlayerViewModel.swift; sourceTree = "<group>"; };
 		526A374B20736C4300754AA9 /* KMVideoPlayerControlHideMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KMVideoPlayerControlHideMode.swift; sourceTree = "<group>"; };
 		526A375B2073A4E400754AA9 /* CMTime+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CMTime+Additions.swift"; sourceTree = "<group>"; };
@@ -86,6 +83,9 @@
 		528DC9AF206E593100E56032 /* KMVideoPlayerViewModel+ControlBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KMVideoPlayerViewModel+ControlBar.swift"; sourceTree = "<group>"; };
 		528DC9B1206E635700E56032 /* KMVideoPlayerStateMachine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KMVideoPlayerStateMachine.swift; sourceTree = "<group>"; };
 		52AAAF20204043C3008AAB74 /* KMVideoPlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KMVideoPlayerViewController.swift; sourceTree = "<group>"; };
+		52B5994D25C998F700B79D12 /* RxRelay.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = RxRelay.xcframework; path = Carthage/Build/RxRelay.xcframework; sourceTree = "<group>"; };
+		52B5994E25C998F700B79D12 /* RxSwift.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = RxSwift.xcframework; path = Carthage/Build/RxSwift.xcframework; sourceTree = "<group>"; };
+		52B5994F25C998F700B79D12 /* RxCocoa.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = RxCocoa.xcframework; path = Carthage/Build/RxCocoa.xcframework; sourceTree = "<group>"; };
 		52BF19CD20446E25008ACB1D /* DemoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DemoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		52BF19CF20446E26008ACB1D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		52BF19D120446E26008ACB1D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -107,9 +107,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5241C69620405F8200BCA5FE /* RxCocoa.framework in Frameworks */,
-				5241C69720405F8200BCA5FE /* RxSwift.framework in Frameworks */,
-				520F3FB7238553A70012A0D6 /* RxRelay.framework in Frameworks */,
+				52B5995225C998F700B79D12 /* RxSwift.xcframework in Frameworks */,
+				52B5995025C998F700B79D12 /* RxRelay.xcframework in Frameworks */,
+				52B5995425C998F700B79D12 /* RxCocoa.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -117,10 +117,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				520F3FB6238553A00012A0D6 /* RxRelay.framework in Frameworks */,
+				52B5995525C998F700B79D12 /* RxCocoa.xcframework in Frameworks */,
 				52BF19E120446ED6008ACB1D /* KMVideoPlayer.framework in Frameworks */,
-				520F3FB32385534F0012A0D6 /* RxSwift.framework in Frameworks */,
-				520F3FB4238553510012A0D6 /* RxCocoa.framework in Frameworks */,
+				52B5995325C998F700B79D12 /* RxSwift.xcframework in Frameworks */,
+				52B5995125C998F700B79D12 /* RxRelay.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -162,9 +162,9 @@
 		5241C69320405F8200BCA5FE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				5241C69420405F8200BCA5FE /* RxCocoa.framework */,
-				5241C69520405F8200BCA5FE /* RxSwift.framework */,
-				520F3FB5238553A00012A0D6 /* RxRelay.framework */,
+				52B5994F25C998F700B79D12 /* RxCocoa.xcframework */,
+				52B5994D25C998F700B79D12 /* RxRelay.xcframework */,
+				52B5994E25C998F700B79D12 /* RxSwift.xcframework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -264,7 +264,6 @@
 				52BF19CA20446E25008ACB1D /* Frameworks */,
 				52BF19CB20446E25008ACB1D /* Resources */,
 				52BF19E220446EE3008ACB1D /* CopyFiles */,
-				529AAAC72050043900BC3D2B /* Copy Carthage Frameworks */,
 			);
 			buildRules = (
 			);
@@ -283,7 +282,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0920;
-				LastUpgradeCheck = 0930;
+				LastUpgradeCheck = 1230;
 				ORGANIZATIONNAME = "Keemotion SPRL";
 				TargetAttributes = {
 					523DA6772040226500C4D64C = {
@@ -351,26 +350,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "if which swiftlint >/dev/null; then\n    swiftlint\nelse\n    echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
-		};
-		529AAAC72050043900BC3D2B /* Copy Carthage Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"$(SRCROOT)/Carthage/Build/iOS/RxSwift.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/RxCocoa.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/RxRelay.framework",
-			);
-			name = "Copy Carthage Frameworks";
-			outputPaths = (
-				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/RxSwift.framework",
-				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/RxCocoa.framework",
-				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/RxRelay.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -466,6 +445,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -528,6 +508,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -551,7 +532,8 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -566,13 +548,13 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
-				);
 				INFOPLIST_FILE = Sources/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.keemotion.KMVideoPlayer;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
@@ -590,13 +572,13 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
-				);
 				INFOPLIST_FILE = Sources/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.keemotion.KMVideoPlayer;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
@@ -609,12 +591,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
-				);
 				INFOPLIST_FILE = DemoApp/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.keemotion.DemoApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -626,12 +607,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
-				);
 				INFOPLIST_FILE = DemoApp/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.keemotion.DemoApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
