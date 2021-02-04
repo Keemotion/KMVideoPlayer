@@ -282,7 +282,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0920;
-				LastUpgradeCheck = 1230;
+				LastUpgradeCheck = 1240;
 				ORGANIZATIONNAME = "Keemotion SPRL";
 				TargetAttributes = {
 					523DA6772040226500C4D64C = {
