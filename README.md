@@ -17,7 +17,7 @@ The implementation relies heavily on `RxSwift` internally and the goal is eventu
 ## Requirements
 
 - iOS 9.3 +
-- Xcode 12.4
+- Xcode 12.5
 - Swift 5.3
 - RxSwift 6
 
@@ -29,4 +29,4 @@ Add `KMVideoPlayer` to your Cartfile.
 github "Keemotion/KMVideoPlayer"
 ```
 
-Run `$ carthage update` and integrate `KMVideoPlayer`, `RxSwift` and `RxCocoa` frameworks into your project.
+Run `$ carthage update  --use-xcframeworks` and integrate `KMVideoPlayer`, `RxSwift` and `RxCocoa` frameworks into your project.
