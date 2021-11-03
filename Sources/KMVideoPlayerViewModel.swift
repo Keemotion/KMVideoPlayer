@@ -80,7 +80,7 @@ internal final class KMVideoPlayerViewModel {
                     return Disposables.create()
                   }
                   .timeout(.seconds(2), scheduler: MainScheduler.instance)
-                  .catchError { _ in .just(player.rate > 0.0) }
+                  .catchAndReturn(player.rate > 0.0)
               } else {
                 return Observable.just(true)
               }
