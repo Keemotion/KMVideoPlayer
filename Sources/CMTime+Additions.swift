@@ -27,7 +27,7 @@ extension CMTime {
   }
 }
 
-extension CMTime: KVORepresentable {
+extension CMTime: @retroactive KVORepresentable {
   public typealias KVOType = NSValue
 
   public init?(KVOValue: KVOType) {

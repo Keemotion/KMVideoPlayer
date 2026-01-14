@@ -38,7 +38,7 @@ import RxCocoa
 
   // controls & ui
   private let loadingIndicatorView: UIActivityIndicatorView = {
-    let activityIndicator = UIActivityIndicatorView(style: .whiteLarge)
+    let activityIndicator = UIActivityIndicatorView(style: .large)
     activityIndicator.hidesWhenStopped = true
     return activityIndicator
   }()
@@ -172,7 +172,7 @@ import RxCocoa
     viewModel.fullscreen
       .do(onNext: { [unowned self] shouldBeFullscreen in
         if shouldBeFullscreen {
-          guard let mainWindow = UIApplication.shared.keyWindow else { return }
+          guard let mainWindow = self.view.window else { return }
 
           self.fullscreenWindow.frame = mainWindow.frame
           self.previousKeyWindow = mainWindow
