@@ -57,9 +57,11 @@ import RxCocoa
   private let fullscreenButton = KMVideoPlayerFullscreenButton()
 
   // fullscreen support
-  private let fullscreenWindow = UIWindow()
-  private weak var previousKeyWindow: UIWindow?
-  private var previousSuperview: UIView?
+  enum FullscreenMode {
+    case disabled
+    case enabled(fullscreenWindow: UIWindow, previousKeyWindow: UIWindow, previousSuperview: UIView)
+  }
+  private var fullscreenMode = FullscreenMode.disabled
 
   private let disposeBag = DisposeBag()
 
@@ -172,29 +174,33 @@ import RxCocoa
     viewModel.fullscreen
       .do(onNext: { [unowned self] shouldBeFullscreen in
         if shouldBeFullscreen {
-          guard let mainWindow = self.view.window else { return }
+          guard let mainWindow = self.view.window, let previousSuperview = self.view.superview else { return }
+          let fullscreenWindow = mainWindow.windowScene.flatMap { UIWindow(windowScene: $0) } ?? UIWindow()
 
-          self.fullscreenWindow.frame = mainWindow.frame
-          self.previousKeyWindow = mainWindow
-          self.previousSuperview = self.view.superview
+          fullscreenWindow.frame = mainWindow.frame
+
           self.view.removeFromSuperview()
           let navigationController = UINavigationController(rootViewController: self)
           navigationController.isNavigationBarHidden = true
-          self.fullscreenWindow.rootViewController = navigationController
-          self.fullscreenWindow.backgroundColor = UIColor.black
-          self.fullscreenWindow.makeKeyAndVisible()
+          fullscreenWindow.rootViewController = navigationController
+          fullscreenWindow.backgroundColor = UIColor.black
+          fullscreenWindow.makeKeyAndVisible()
+          self.fullscreenMode = .enabled(fullscreenWindow: fullscreenWindow,
+                                         previousKeyWindow: mainWindow,
+                                         previousSuperview: previousSuperview)
         } else {
-          self.fullscreenWindow.rootViewController = nil
+          guard case .enabled(let fullscreenWindow, let previousKeyWindow, let previousSuperview) = fullscreenMode else {
+            return
+          }
+          fullscreenWindow.rootViewController = nil
           self.willMove(toParent: nil)
           self.view.removeFromSuperview()
           self.removeFromParent()
-          if let previousSuperview = self.previousSuperview {
-            self.view.frame = previousSuperview.bounds
-            previousSuperview.addSubview(self.view)
-            self.previousSuperview = nil
-          }
-          self.fullscreenWindow.isHidden = true
-          self.previousKeyWindow?.makeKeyAndVisible()
+          self.view.frame = previousSuperview.bounds
+          previousSuperview.addSubview(self.view)
+          fullscreenWindow.isHidden = true
+          previousKeyWindow.makeKeyAndVisible()
+          fullscreenMode = .disabled
         }
       })
       .startWith(false)
