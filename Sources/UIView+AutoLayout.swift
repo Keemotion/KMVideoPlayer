@@ -30,13 +30,13 @@ internal extension UIView {
     for edge in edges {
       switch edge {
       case .top:
-        topAnchor.constraint(equalTo: superview.topAnchor, constant: margin).isActive = true
+        topAnchor.constraint(equalTo: superview.safeAreaLayoutGuide.topAnchor, constant: margin).isActive = true
       case .bottom:
-        bottomAnchor.constraint(equalTo: superview.bottomAnchor, constant: -margin).isActive = true
+        bottomAnchor.constraint(equalTo: superview.safeAreaLayoutGuide.bottomAnchor, constant: -margin).isActive = true
       case .left:
-        leftAnchor.constraint(equalTo: superview.leftAnchor, constant: margin).isActive = true
+        leftAnchor.constraint(equalTo: superview.safeAreaLayoutGuide.leftAnchor, constant: margin).isActive = true
       case .right:
-        rightAnchor.constraint(equalTo: superview.rightAnchor, constant: -margin).isActive = true
+        rightAnchor.constraint(equalTo: superview.safeAreaLayoutGuide.rightAnchor, constant: -margin).isActive = true
       }
     }
   }
